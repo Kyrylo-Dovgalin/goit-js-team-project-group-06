@@ -1,2 +1,13 @@
 @import './common';
-@import './example';
+
+@import './base/reset';
+@import './units/variables';
+
+@import './base/base';
+@import './base/container';
+
+@import './layout/header';
+
+/*  TO BE ADDED */
+@import './layout/footer';
+@import './layout/modal';
