@@ -1,16 +1,37 @@
 .footer {
   padding: 30px 0;
-  background-color: var(--footer-backgr-cl);
-}
+  background-color: $background-footer-cl;
 
-.footer-text {
-  font-size: 14px;
-  line-height: calc(16 / 14);
-  text-align: center;
+  &__container--flex {
+    @media screen and (min-width: $tablet) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+  }
 
-  color: var(--footer-txt-cl);
-}
+  &__text {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: calc(16 / 14);
+    text-align: center;
 
-.footer-link {
-  text-decoration: underline;
+    color: $footer-text-cl;
+
+    @media screen and (min-width: $tablet) {
+      font-size: 16px;
+      line-height: calc(19 / 16);
+    }
+  }
+
+  &__link {
+    text-decoration: underline;
+  }
+
+  &__copyright {
+    @media screen and (max-width: ($tablet - 1px)) {
+      margin-bottom: 10px;
+    }
+  }
 }

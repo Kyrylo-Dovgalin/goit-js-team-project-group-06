@@ -1,13 +1,15 @@
-@import './common';
+@import './base/common';
 
 @import './base/reset';
-@import './units/variables';
+@import './utils/variables';
+@import './utils/mixins';
 
 @import './base/base';
+@import './base/hidden';
 @import './base/container';
 
 @import './layout/header';
-
-/*  TO BE ADDED */
+@import './layout/movies';
+@import './layout/library-movies';
 @import './layout/footer';
 @import './layout/modal';
