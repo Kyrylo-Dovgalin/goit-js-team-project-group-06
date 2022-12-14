@@ -151,6 +151,7 @@
     font-weight: 500;
     font-size: 12px;
     line-height: 1.17;
+    text-transform: uppercase;
     color: $white-text-cl;
   }
 
@@ -254,12 +255,13 @@
   }
 }
 .library__btns-btn {
-  padding: 14px 0 12px 0;
+  padding: 13px 0 13px 0;
   min-width: 130px;
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
   cursor: pointer;
+  text-transform: uppercase;
   color: $white-text-cl;
   background-color: transparent;
   border: 1px solid $white-text-cl;
