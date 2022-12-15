@@ -1,0 +1,93 @@
+.movies {
+  padding-top: 20px;
+  padding-bottom: 40px;
+  @media screen and (min-width: $tablet) {
+    padding-top: 59px;
+    padding-bottom: 60px;
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: $indent;
+    @media screen and (min-width: $tablet) {
+      $indent: 32px;
+      gap: $indent;
+    }
+    @media screen and (min-width: $desktop) {
+      $indent: 16px;
+      gap: $indent;
+    }
+  }
+
+  &__card {
+    @media screen and (min-width: $tablet) {
+      $indent: 32px;
+      $items: 2;
+      width: calc((100% - ($indent) * (($items) - 1)) / ($items));
+    }
+
+    @media screen and (min-width: $desktop) {
+      $indent: 16px;
+      $items: 3;
+      width: calc((100% - ($indent) * (($items) - 1)) / ($items));
+    }
+  }
+
+  &__card-photo {
+    margin-bottom: 10px;
+    width: 280px;
+    height: 402px;
+    cursor: pointer;
+
+    border-radius: 5px;
+    transition: box-shadow $cubic;
+
+    @media screen and (min-width: $tablet) {
+      margin-bottom: 8px;
+      width: 336px;
+      height: 455px;
+    }
+    @media screen and (min-width: $desktop) {
+      margin-bottom: 12px;
+      width: 395px;
+      height: 574px;
+    }
+    &:hover {
+      box-shadow: 0px 0px 21px 3px rgba(255, 107, 1, 1);
+    }
+  }
+  &__card-title {
+    margin-bottom: 4px;
+    font-size: 12px;
+    line-height: 1.17;
+    color: $black-text-cl;
+    @media screen and (min-width: $tablet) {
+      line-height: 1.33;
+    }
+    @media screen and (min-width: $desktop) {
+      font-size: 20px;
+      line-height: 1.2;
+    }
+  }
+  &__card-text {
+    display: flex;
+    gap: 5px;
+
+    font-size: 12px;
+    line-height: 1.17;
+    color: $accent-text-cl;
+    @media screen and (min-width: $tablet) {
+      line-height: 1.33;
+    }
+    @media screen and (min-width: $desktop) {
+      font-size: 20px;
+      line-height: 1.2;
+    }
+  }
+  &__card-genres {
+    padding-right: 5px;
+    border-right: 1.5px solid $accent-text-cl;
+  }
+}
