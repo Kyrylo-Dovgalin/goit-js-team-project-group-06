@@ -1,5 +1,5 @@
 import SimpleSlider from 'simpleslider-js';
-import 'simpleslider-js/dist/simpleslider.min.css';
+//import 'simpleslider-js/dist/simpleslider.min.css';
 
 const refs = {
   openModalBtn: document.querySelector('[data-modal-open]'),
