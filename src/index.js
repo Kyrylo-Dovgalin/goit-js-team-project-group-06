@@ -1,3 +1,3 @@
-import './js/header';
-import './js/search';
-import './js/movies';
+import './js/home/home-header';
+import './js/home/home-movies';
+import './js/footer';
