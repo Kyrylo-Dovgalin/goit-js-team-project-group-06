@@ -16,7 +16,7 @@ refs.openModal.addEventListener('click', openModal);
 function openModal (event) {
 setTimeout(() => {
 refs.modal.classList.toggle('is-hidden');
-refs.body.classList.toggle('no-scroll');
+refs.body.classList.add('no-scroll');
 refs.closeModalBtn.addEventListener('click', closeModal);
 refs.backdrop.addEventListener('click', closeModalEscape);
 refs.backdrop.addEventListener('click', closeModalBackdrop);
@@ -36,7 +36,7 @@ refs.backdrop.removeEventListener('click', closeModal);
 refs.backdrop.removeEventListener('click', closeModalEscape);
 document.removeEventListener('keydown', event => closeModalEscape(event));
 refs.backdrop.classList.remove('backdrop-movie');
-
+refs.body.classList.remove('no-scroll');
 }
 
 function closeModalBackdrop(event) {
