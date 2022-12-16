@@ -1,3 +1,7 @@
+body.no-scroll {
+  overflow: hidden;
+}
+
 .backdrop-movie {
   position: fixed;
   display: flex;
@@ -12,9 +16,6 @@
   box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
   border-radius: 30px;
   z-index: 100;
-  // visibility: visible;
-  // opacity: 1;
-  // pointer-events: initial;
 
 
   @media screen and (min-width: $tablet) {
