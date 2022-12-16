@@ -21,15 +21,18 @@
 }
 
 .modal {
+    scroll-behavior: smooth;
+    overflow-y: scroll;
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 400px;
+    width: 700px;
+    height: 600px;
 
     padding: 5px;
+        padding-top: 15px;
 
     background-color: $white-text-cl;
-        background-color: blueviolet;
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
         0px 2px 1px rgba(0, 0, 0, 0.2);
     border-radius: 4px;
@@ -38,20 +41,104 @@
     transition: transform 250ms $cubic;
 }
 
-
+.modal-title{
+    text-align: center;
+}
 
 .modal-close{
+    position: absolute;
+    right: 0;
     padding: 0;
     width: 30px;
     height: 30px;
-    border-radius: 50%;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border: 0;
     background-color: $white-text-cl;
 }
-.slider-slide{
-text-align: center;
-img {
-        margin: 0 auto;
+
+    .card {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+        padding: 25px;
     }
+
+
+.card__item {
+    margin-bottom: 30px;
 }
 
+.card__item:last-child {
+    margin-bottom: 0;
+}
+
+
+    .card__item {
+        width: calc((100% - 90px) / 4);
+        margin-bottom: 0;
+    }
+
+
+
+.card .card__item:hover,
+.card .card__item:focus {
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
+    transition: box-shadow 250ms $cubic;
+}
+
+.card__title {
+    color: $footer-text-cl;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.06em;
+    margin-bottom: 4px;
+}
+
+.card__desc {
+    color: $modal-text-cl;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.card__link {
+    text-decoration: none;
+}
+
+.card__border {
+    border-left: 1px solid #eeeeee;
+    border-right: 1px solid #eeeeee;
+    border-bottom: 1px solid #eeeeee;
+text-align: center;
+padding: 5px;
+}
+
+.card__overflow {
+    position: relative;
+    overflow: hidden;
+}
+
+.card__overlay {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $background-header-cl;
+    transform: translateY(100%);
+    transition: transform 250ms $cubic;
+}
+
+.card__item .card__link:hover .card__overlay,
+.card__item .card__link:focus .card__overlay {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+}
+
+.card__text {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.5;
+    color: $white-text-cl;
+    padding: 15px;
+}
