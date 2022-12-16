@@ -1,0 +1,25 @@
+<section class="movies">
+  <div class="container">
+    <ul class="movies__list library-list">
+      <!-- рендорим лишку start-->
+      <li class="movies__card">
+        <img
+          class="movies__card-photo"
+          src="https://image.tmdb.org/t/p/w500${poster_path}"
+          alt="${title}"
+          loading="lazy"
+          width="395px"
+          height="354px"
+        />
+        <h2 class="movies__card-title">${title}</h2>
+        <div class="movies__card-text">
+          <p class="movies__card-genres">${genre_ids}</p>
+          <p class="movies__card-release">${release_date}</p>
+          <!-- ${vote_average} -->
+          <div class="movies__card-rating">8.1</div>
+        </div>
+      </li>
+      <!-- end -->
+    </ul>
+  </div>
+</section>

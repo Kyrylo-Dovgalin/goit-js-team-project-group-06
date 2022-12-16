@@ -97,4 +97,21 @@
     padding-right: 5px;
     border-right: 1.5px solid $accent-text-cl;
   }
+  &__card-rating {
+    width: 36px;
+    height: 16px;
+    padding: 1px 10px;
+    text-align: center;
+    line-height: 1.17;
+    background-color: $accent-text-cl;
+    color: $white-text-cl;
+    border-radius: 5px;
+    @media screen and (min-width: $desktop) {
+      align-self:flex-end;
+      width: 40px;
+      height: 20px;
+      padding: 3px 12px;
+      font-size: 12px;
+    }
+  }
 }
