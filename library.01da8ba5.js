@@ -1,0 +1,2 @@
+const e=document.querySelector(".mask");window.addEventListener("load",(()=>{e.classList.add("hide")}));const d={openModalBtn:document.querySelector("[data-modal-open]"),closeModalBtn:document.querySelector("[data-modal-close]"),modal:document.querySelector("[data-modal]")};function o(){d.modal.classList.toggle("is-hidden")}d.openModalBtn.addEventListener("click",o),d.closeModalBtn.addEventListener("click",o);
+//# sourceMappingURL=library.01da8ba5.js.map
