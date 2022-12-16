@@ -3,11 +3,20 @@ import {
   getGanres,
 } from '../../api-services/movies-api-service';
 import { createPagi } from '../pagination';
-export { galleryConteiner, createMoviesMarkup }
+export { galleryConteiner, createMoviesMarkup };
 
 const galleryConteiner = document.querySelector('.movies__list');
 
-function createMoviesMarkup({ results }) {
+async function createMoviesMarkup() {
+  const response = await getPopularMovies();
+  const results = response.data.results;
+  const arrGenerId = response.data.results.map(item => item.genre_ids);
+
+  const genreResponse = await getGanres();
+  const arrGener = genreResponse.data.genres;
+
+  replaceIdtoGener(arrGener, arrGenerId);
+
   const markup = results
     .map(
       ({
@@ -26,8 +35,8 @@ function createMoviesMarkup({ results }) {
     />
     <h2 class="movies__card-title">${title}</h2>
     <div class="movies__card-text">
-      <p class="movies__card-genres">${genre_ids}</p>
-      <p class="movies__card-release">${release_date}</p>
+      <p class="movies__card-genres">${genre_ids.join(', ')}</p>
+      <p class="movies__card-release">${release_date.slice(0, 4)}</p>
     </div>
   </li>`
     )
@@ -35,14 +44,28 @@ function createMoviesMarkup({ results }) {
   galleryConteiner.insertAdjacentHTML('beforeend', markup);
 }
 getPopularMovies()
-  .then(({ data }) => { createMoviesMarkup(data); totalRes = data.total_results;  createPagi(totalRes)})
+  .then(({ data }) => {
+    createMoviesMarkup(data);
+    totalRes = data.total_results;
+    createPagi(totalRes);
+  })
   .catch(error => console.log(error));
-  
 
 // getPopularMovies()
 //   .then(({ data }) => createMoviesMarkup(data))
 //   .catch(error => console.log(error));
 
-getGanres()
-  .then(({ data }) => console.log(data))
-  .catch(error => console.log(error));
+// getGanres()
+//   .then(({ data }) => console.log(data))
+//   .catch(error => console.log(error));
+
+// функция для замены ID  на его название
+function replaceIdtoGener(arrGener, arrGenerId) {
+  arrGenerId.forEach(item => {
+    for (let i = 0; i < item.length; i += 1) {
+      for (let j = 0; j < arrGener.length; j += 1) {
+        item[i] === arrGener[j].id ? (item[i] = arrGener[j].name) : item[i];
+      }
+    }
+  });
+}
