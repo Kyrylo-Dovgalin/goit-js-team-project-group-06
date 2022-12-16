@@ -2,6 +2,8 @@ import {
   getPopularMovies,
   getGanres,
 } from '../../api-services/movies-api-service';
+import { createPagi } from '../pagination';
+export { galleryConteiner, createMoviesMarkup }
 
 const galleryConteiner = document.querySelector('.movies__list');
 
@@ -33,8 +35,13 @@ function createMoviesMarkup({ results }) {
   galleryConteiner.insertAdjacentHTML('beforeend', markup);
 }
 getPopularMovies()
-  .then(({ data }) => createMoviesMarkup(data))
+  .then(({ data }) => { createMoviesMarkup(data); totalRes = data.total_results;  createPagi(totalRes)})
   .catch(error => console.log(error));
+  
+
+// getPopularMovies()
+//   .then(({ data }) => createMoviesMarkup(data))
+//   .catch(error => console.log(error));
 
 getGanres()
   .then(({ data }) => console.log(data))
