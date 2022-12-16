@@ -1,7 +1,7 @@
 // import axios from 'axios';
 
 const refs = {
-  openModal: document.querySelector('.gallery__list'),
+  openModal: document.querySelector('.movies__list'),
   closeModalBtn: document.querySelector('.button-close'),
   backdrop: document.querySelector('.backdrop-movie'),
   movieCard: document.querySelector('.movie-card'),
