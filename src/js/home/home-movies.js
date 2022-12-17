@@ -25,7 +25,7 @@ async function createMoviesMarkup(page) {
         id,
         release_date,
         genre_ids,
-      }) => `<li class="movies__card" id="${id}">>
+      }) => `<li class="movies__card" id="${id}">
     <img
       class="movies__card-photo"
       src="https://image.tmdb.org/t/p/w500${poster_path}"
