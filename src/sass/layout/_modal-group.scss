@@ -63,21 +63,39 @@ width: 300px;
 }
 
 .modal-close{
-    position: absolute;
-    right: 0;
-    padding: 0;
+position: absolute;
+    top: 8px;
+    right: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 30px;
     height: 30px;
-    border: 0;
-    background-color: $white-text-cl;
+    border: 1px solid rgba(0, 0, 0, .1);
+    background-color: initial;
+    border-radius: 50%;
     cursor: pointer;
+    margin-top: 8px;
+    margin-right: 8px;
+    transform: scale(1);
+    transition: border-color $cubic, background-color $cubic, transform $cubic;
+
+    &:hover,
+    &:focus {
+        background-color: $background-accent-cl;
+        border-color: $background-accent-cl;
+    }
 }
 
     .card {
         display: flex;
         flex-wrap: wrap;
         gap: 30px;
-        padding: 25px;
+        padding: 20px 20px;
+        @media screen and (min-width: $tablet) {
+                    padding: 25px 40px;
+        
+            }
     }
 
 
