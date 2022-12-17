@@ -152,10 +152,12 @@
     line-height: 1.17;
     text-transform: uppercase;
     color: $white-text-cl;
-    transition: color $cubic;
+    transition: text-shadow $cubic;
     &:focus,
     &:hover {
-      color: $accent-text-cl;
+      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff6b08,
+        0 0 30px #ff6b08, 0 0 40px #ff6b08, 0 0 55px #ff6b08, 0 0 75px #ff6b08,
+        0px 0px 16px rgba(255, 164, 72, 0);
     }
   }
 
@@ -227,7 +229,7 @@
 
     background-color: $warning-text-cl;
     border-radius: 3px;
-    box-shadow: 0px 9px 50px 9px $accent-text-cl;
+    box-shadow: 0px 5px 23px 3px $accent-text-cl;
     animation: Move;
     animation-duration: 1s;
   }
@@ -249,19 +251,22 @@
     font-size: 30px;
     line-height: 1.17;
     color: $white-text-cl;
-    transition: color $cubic;
+    transition: text-shadow $cubic;
     .logo:hover &,
     .logo:focus & {
-      color: $accent-text-cl;
+      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff6b08,
+        0 0 30px #ff6b08, 0 0 40px #ff6b08, 0 0 55px #ff6b08, 0 0 75px #ff6b08,
+        0px 0px 16px rgba(255, 164, 72, 0);
     }
     @media screen and (min-width: $tablet) {
       display: block;
     }
   }
   &__icon {
-    animation: Move;
-    animation-duration: 1s;
-    box-shadow: 0px 0px 87px 22px $accent-text-cl;
+    animation: Bounce;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    box-shadow: 0px 0px 25px 0px $accent-text-cl;
     fill: $white-text-cl;
   }
 }
