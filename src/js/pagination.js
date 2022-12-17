@@ -20,4 +20,6 @@ function createPagi (total)
   .then(({ data }) => createMoviesMarkup(data))
   .catch(error => console.log(error));
      console.log(currentPage);
- });}
+  });
+}
+ 
