@@ -6,9 +6,9 @@ import { createPagi } from '../pagination';
 export { galleryConteiner, createMoviesMarkup };
 
 const galleryConteiner = document.querySelector('.movies__list');
-
-async function createMoviesMarkup() {
-  const response = await getPopularMovies();
+let page= 1
+async function createMoviesMarkup(page) {
+  const response = await getPopularMovies(page);
   const results = response.data.results;
   const arrGenerId = response.data.results.map(item => item.genre_ids);
 
@@ -42,9 +42,9 @@ async function createMoviesMarkup() {
     .join('');
   galleryConteiner.insertAdjacentHTML('beforeend', markup);
 }
-getPopularMovies()
+getPopularMovies(page)
   .then(({ data }) => {
-    createMoviesMarkup(data);
+    createMoviesMarkup(page);
     const totalRes = data.total_results;
     createPagi(totalRes);
   })
