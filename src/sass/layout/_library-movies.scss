@@ -4,17 +4,18 @@
 
 к паддингу макета добавить высоту футера
 
-*/
+/*ADDED BY KYRYLO NEED TO BE FIXED*/
 
-// .library-movies {
+.library-movies {
+  padding-bottom: 200px; // to fix
 
-//   padding-bottom: 145px; // to fix
+  @media screen and (min-width: $tablet) {
+    padding-bottom: 150px; // to fix
+  }
 
-//   @media screen and (min-width: $tablet) {
+  @media screen and (min-width: $desktop) {
+    padding-bottom: 130px; // to fix
+  }
+}
 
-//     padding-bottom: 105px; // to fix
-//   }
-
-//   @media screen and (min-width: $desktop) {
-//     padding-bottom: 85px; // to fix
-//   }
+/*!!!!!!!!!!!!!!!!!*/
