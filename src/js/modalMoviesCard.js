@@ -85,26 +85,26 @@ function closeModalEscape(event) {
 // Добавляем слушателя событий на список с карточками фильмов
 
 const cardMovie = document.querySelector('.movies__list');
-cardMovie.addEventListener('click', serchIdfoMovie);
+cardMovie.addEventListener('click', searchIdforMovie);
 
 //Получаем данные по ID фильма и после того как приходят данные по запросу рендерим данные в модалку
 
-async function serchIdfoMovie(e) {
+async function searchIdforMovie(e) {
   if (e.target.nodeName === 'P') {
-    const IdMovie = e.target.parentElement.parentElement.id;
-    const response = await fetchById(IdMovie);
+    const idMovie = e.target.parentElement.parentElement.id;
+    const response = await fetchById(idMovie);
   }
   if (e.target.nodeName === 'LI') {
-    const IdMovie = e.target.id;
-    const response = await fetchById(IdMovie);
+    const idMovie = e.target.id;
+    const response = await fetchById(idMovie);
   }
   if (
     e.target.nodeName === 'DIV' ||
     e.target.nodeName === 'IMG' ||
     e.target.nodeName === 'H2'
   ) {
-    const IdMovie = e.target.parentElement.id;
-    const response = await fetchById(IdMovie);
+    const idMovie = e.target.parentElement.id;
+    const response = await fetchById(idMovie);
     console.log(response);
   }
 }
