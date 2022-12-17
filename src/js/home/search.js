@@ -31,7 +31,6 @@ async function onSearch(evt) {
     createMoviesMarkupKey(searchQuery, page);
     const totalRes = data.total_results;
     createPagi(totalRes);
-
   })
     .catch(error => console.log(error))
     .finally(() => {
