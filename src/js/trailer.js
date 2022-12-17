@@ -1,6 +1,6 @@
 
 import axios from 'axios';
-import {Notify} from 'notiflix'
+//import {Notify} from 'notiflix'
 const trailerButton= document.querySelector(`.button-open-trailer`);
 const API_KEY=`f983fc840eb543faba07dcbe6db19b0b`
 const base_url=`https://api.themoviedb.org/3/movie/`
