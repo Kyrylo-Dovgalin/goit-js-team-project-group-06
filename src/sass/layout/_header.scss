@@ -13,7 +13,7 @@
         $background-header-cl,
         $background-header-cl
       ),
-      url(../images/header/home-bg/home-mobile-bg.jpg);
+      url(../images/header/home-bg/CORECT_home-mobile-bg-@1x.jpg);
 
     @media screen and (min-device-pixel-ratio: 2),
       screen and (-webkit-min-device-pixel-ratio: 2),
@@ -24,7 +24,7 @@
           $background-header-cl,
           $background-header-cl
         ),
-        url(../images/header/home-bg/home-mobile-bg-@2x.jpg);
+        url(../images/header/home-bg/CORECT_home-mobile-bg-@2x.jpg);
     }
 
     @media screen and (min-width: $tablet) {
@@ -34,7 +34,7 @@
           $background-header-cl,
           $background-header-cl
         ),
-        url(../images/header/home-bg/home-tablet-bg.jpg);
+        url(../images/header/home-bg/CORECT_home-tablet-bg-@1x.jpg);
       @media screen and (min-device-pixel-ratio: 2),
         screen and (-webkit-min-device-pixel-ratio: 2),
         screen and (min-resolution: 192dpi),
@@ -44,7 +44,7 @@
             $background-header-cl,
             $background-header-cl
           ),
-          url(../images/header/home-bg/home-tablet-bg-@2x.jpg);
+          url(../images/header/home-bg/CORECT_home-tablet-bg-@2x.jpg);
       }
     }
 
@@ -54,7 +54,7 @@
           $background-header-cl,
           $background-header-cl
         ),
-        url(../images/header/home-bg/home-desctop-bg.jpg);
+        url(../images/header/home-bg/CORECT_home-desctop-bg-@1x.jpg);
       @media screen and (min-device-pixel-ratio: 2),
         screen and (-webkit-min-device-pixel-ratio: 2),
         screen and (min-resolution: 192dpi),
@@ -64,7 +64,7 @@
             $background-header-cl,
             $background-header-cl
           ),
-          url(../images/header/home-bg/home-desctop-bg-@2x.jpg);
+          url(../images/header/home-bg/CORECT_home-desctop-bg-@2x.jpg);
       }
     }
   }
