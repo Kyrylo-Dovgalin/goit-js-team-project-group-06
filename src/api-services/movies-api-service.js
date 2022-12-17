@@ -1,5 +1,5 @@
 import axios from 'axios';
-export { getPopularMovies, getGanres, BASE_URL, API_KEY, fetchById };
+export { getPopularMovies, getGanres, BASE_URL, API_KEY, fetchById, onKeyWord };
 const BASE_URL = 'https://api.themoviedb.org/3/';
 const API_KEY = 'f983fc840eb543faba07dcbe6db19b0b';
 const getPopularMovies = async page => {
@@ -17,3 +17,7 @@ async function fetchById(id) {
   const data = await responce.json();
   return data;
 }
+
+const onKeyWord = async (searchQuery, page=1) => {
+  return await axios.get(`${BASE_URL}search/movie?api_key=${API_KEY}&query=${searchQuery}&page=${page}`);
+};
