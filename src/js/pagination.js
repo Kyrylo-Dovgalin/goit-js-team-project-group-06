@@ -16,8 +16,5 @@ function createPagi (total)
   pagination.on('afterMove', (event) => {
     galleryConteiner.innerHTML = ""
     const currentPage = event.page;
-    getPopularMovies(currentPage)
-  .then(({ data }) => createMoviesMarkup(data))
-  .catch(error => console.log(error));
-     console.log(currentPage);
+    createMoviesMarkup(currentPage);
  });}
