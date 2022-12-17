@@ -45,7 +45,7 @@ async function createMoviesMarkup() {
 getPopularMovies()
   .then(({ data }) => {
     createMoviesMarkup(data);
-    totalRes = data.total_results;
+    const totalRes = data.total_results;
     createPagi(totalRes);
   })
   .catch(error => console.log(error));
