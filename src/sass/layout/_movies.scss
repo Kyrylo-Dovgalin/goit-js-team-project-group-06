@@ -29,6 +29,7 @@
   }
 
   &__card {
+    cursor: pointer;
     @media screen and (min-width: $tablet) {
       $indent: 32px;
       $items: 2;
@@ -46,7 +47,6 @@
     margin-bottom: 10px;
     width: 280px;
     height: 402px;
-    cursor: pointer;
 
     border-radius: 5px;
     transition: box-shadow $cubic;
@@ -61,8 +61,8 @@
       width: 395px;
       height: 574px;
     }
-    &:hover {
-      box-shadow: 0px 0px 21px 3px rgba(255, 107, 1, 1);
+    .movies__card:hover & {
+      box-shadow: 0px 0px 21px 3px $accent-text-cl;
     }
   }
   &__card-title {
@@ -81,7 +81,8 @@
   &__card-text {
     display: flex;
     gap: 5px;
-
+  }
+  &__card-genres {
     font-size: 12px;
     line-height: 1.17;
     color: $accent-text-cl;
@@ -93,25 +94,21 @@
       line-height: 1.2;
     }
   }
-  &__card-genres {
-    padding-right: 5px;
-    border-right: 1.5px solid $accent-text-cl;
-  }
   &__card-rating {
     width: 36px;
     height: 16px;
     padding: 1px 10px;
     text-align: center;
+    font-size: 12px;
     line-height: 1.17;
     background-color: $accent-text-cl;
     color: $white-text-cl;
     border-radius: 5px;
     @media screen and (min-width: $desktop) {
-      align-self:flex-end;
+      align-self: flex-end;
       width: 40px;
       height: 20px;
       padding: 3px 12px;
-      font-size: 12px;
     }
   }
 }
