@@ -6,7 +6,7 @@ import { createPagi } from '../pagination';
 export { galleryConteiner, createMoviesMarkup };
 
 const galleryConteiner = document.querySelector('.movies__list');
-let page= 1
+let page = 1;
 async function createMoviesMarkup(page) {
   const response = await getPopularMovies(page);
   const results = response.data.results;
@@ -22,9 +22,10 @@ async function createMoviesMarkup(page) {
       ({
         poster_path,
         title,
+        id,
         release_date,
         genre_ids,
-      }) => `<li class="movies__card">
+      }) => `<li class="movies__card" id="${id}">>
     <img
       class="movies__card-photo"
       src="https://image.tmdb.org/t/p/w500${poster_path}"
