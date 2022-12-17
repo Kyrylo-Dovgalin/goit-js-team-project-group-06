@@ -3,6 +3,7 @@
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  background-color: $background-header-cl;
 
   &__home {
     padding-bottom: 92px;
@@ -138,13 +139,11 @@
   }
 
   &__nav-list {
-    // @extend %list;
     display: flex;
     gap: 40px;
   }
 
   &__nav-link {
-    //@extend %link;
     position: relative;
 
     font-family: $main-font;
@@ -153,6 +152,11 @@
     line-height: 1.17;
     text-transform: uppercase;
     color: $white-text-cl;
+    transition: color $cubic;
+    &:focus,
+    &:hover {
+      color: $accent-text-cl;
+    }
   }
 
   &__form {
@@ -171,12 +175,18 @@
 
   &__form-input {
     padding-right: 25px;
+    padding-left: 5px;
     width: 100%;
     color: $white-text-cl;
     background-color: inherit;
     border: transparent;
     border-bottom: 0.5px solid $white-text-cl;
+    transition: border-bottom $cubic;
     outline: none;
+    &:hover,
+    &:focus {
+      border-bottom: 0.5px solid $accent-text-cl;
+    }
 
     &::placeholder {
       font-weight: 400;
@@ -187,15 +197,22 @@
   }
   &__form-btn {
     position: absolute;
-    bottom: 0px;
+    bottom: 0;
     right: 0;
+
     background-color: inherit;
+    border-radius: 5px;
     border: transparent;
     cursor: pointer;
   }
   &__form-btn--icon {
     width: 100%;
     fill: $white-text-cl;
+    transition: fill $cubic;
+    .header__form-btn:hover &,
+    .header__form-btn:focus & {
+      fill: $accent-text-cl;
+    }
   }
 }
 
@@ -210,11 +227,13 @@
 
     background-color: $warning-text-cl;
     border-radius: 3px;
+    box-shadow: 0px 9px 50px 9px $accent-text-cl;
+    animation: Move;
+    animation-duration: 1s;
   }
 }
 
 .logo {
-  //   @extend %link;
   display: flex;
   align-items: center;
   @media screen and (min-width: $tablet) {
@@ -223,24 +242,31 @@
   @media screen and (min-width: $desktop) {
     gap: 10px;
   }
+
   &__title {
     display: none;
     font-weight: 500;
     font-size: 30px;
     line-height: 1.17;
     color: $white-text-cl;
-
+    transition: color $cubic;
+    .logo:hover &,
+    .logo:focus & {
+      color: $accent-text-cl;
+    }
     @media screen and (min-width: $tablet) {
       display: block;
     }
   }
   &__icon {
+    animation: Move;
+    animation-duration: 1s;
+    box-shadow: 0px 0px 87px 22px $accent-text-cl;
     fill: $white-text-cl;
   }
 }
 
 .library__btns {
-  //   @extend %list;
   display: flex;
   align-items: center;
   justify-content: center;

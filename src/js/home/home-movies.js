@@ -34,10 +34,9 @@ async function createMoviesMarkup() {
       height="354px"
     />
     <h2 class="movies__card-title">${title}</h2>
-    <div class="movies__card-text">
-      <p class="movies__card-genres">${genre_ids.join(', ')}</p>
-      <p class="movies__card-release">${release_date.slice(0, 4)}</p>
-    </div>
+    <p class="movies__card-genres">${genre_ids.join(
+      ', '
+    )} | ${release_date.slice(0, 4)}</p>
   </li>`
     )
     .join('');
@@ -46,7 +45,7 @@ async function createMoviesMarkup() {
 getPopularMovies()
   .then(({ data }) => {
     createMoviesMarkup(data);
-    totalRes = data.total_results;
+    const totalRes = data.total_results;
     createPagi(totalRes);
   })
   .catch(error => console.log(error));

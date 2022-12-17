@@ -1,6 +1,7 @@
 @import './base/common';
 
 @import './base/reset';
+@import './utils/animations';
 @import './utils/variables';
 @import './utils/mixins';
 
@@ -11,8 +12,8 @@
 @import './layout/header';
 @import './layout/movies';
 @import './layout/library-movies';
+@import './layout/pagination';
 @import './layout/footer';
 @import './layout/loader';
 @import './layout/modal';
 @import './layout/modal-group';
-
