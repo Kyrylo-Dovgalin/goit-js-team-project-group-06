@@ -20,6 +20,7 @@ refs.body.classList.add('no-scroll');
 refs.closeModalBtn.addEventListener('click', closeModal);
 refs.backdrop.addEventListener('click', closeModalEscape);
 refs.backdrop.addEventListener('click', closeModalBackdrop);
+refs.backdrop.addEventListener('click', closeModal);
 document.addEventListener('keydown', event => closeModalEscape(event));
 refs.backdrop.classList.remove('is-hidden');
 refs.backdrop.classList.add('backdrop-movie');
