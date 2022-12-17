@@ -41,3 +41,8 @@
     }
   }
 }
+.heart__icon {
+  animation: Heart;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
