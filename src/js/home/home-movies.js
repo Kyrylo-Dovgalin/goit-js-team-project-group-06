@@ -4,6 +4,8 @@ import {
   onKeyWord,
 } from '../../api-services/movies-api-service';
 import { createPagi } from '../pagination';
+import { searchQuery } from './search';
+
 export { galleryConteiner, createMoviesMarkup, createMoviesMarkupKey };
 
 const galleryConteiner = document.querySelector('.movies__list');
@@ -71,8 +73,8 @@ function replaceIdtoGener(arrGener, arrGenerId) {
   });
 }
 
-async function createMoviesMarkupKey() {
-  const response = await onKeyWord();
+async function createMoviesMarkupKey(searchQuery, page) {
+  const response = await onKeyWord(searchQuery, page);
   const results = response.data.results;
   const arrGenerId = response.data.results.map(item => item.genre_ids);
 
