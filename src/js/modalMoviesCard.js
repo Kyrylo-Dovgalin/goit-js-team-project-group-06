@@ -108,3 +108,84 @@ async function searchIdforMovie(e) {
     console.log(response);
   }
 }
+
+function createMarkupMovieCardInModal(data) {
+  const dataMovie = data.reduce(({ poster_path, original_title, title, vote_average, vote_count, genres, overview, popularity, }) => {
+    return acc + `<div class="backdrop-movie is-hidden" data-modal>
+            <div class="modal-movie">
+              <button class="button-close" data-modal-close>
+                <svg class="button-close_icon">
+                  <use href="./images/Icons/symbol-defs.svg#icon-close"></use>
+                </svg>
+              </button>
+              <div class="movie-card">
+                <div class="movie-card_request">
+                  <div class="movie-card_img-cover">
+                    <img
+                    class="movie-card_photo"
+                    src="${poster_path}"
+                    alt="${title}"
+                  />
+                    <button class="button-open-trailer"></button>
+                  </div>
+                </div>
+                <div class="movie-description">
+                  <h2 class="movie-title">${title}</h2>
+                  <table class="movie-table">
+                    <tbody>
+                      <tr class="movie-table_row">
+                        <td>
+                          <p class="movie-table_title">Vote/Votes</p>
+                        </td>
+                        <td>
+                          <p>
+                            <span movie-table_vote>${vote_average} / ${vote_count}</span>
+                          </p>
+                        </td>
+                      </tr>
+                      <tr class="movie-table_row">
+                        <td>
+                          <p class="movie-table_title">Popularity</p>
+                        </td>
+                        <td>
+                          <p>${popularity}</p>
+                        </td>
+                      </tr>
+                      <tr class="movie-table_row">
+                        <td>
+                          <p class="movie-table_title">Original Title</p>
+                        </td>
+                        <td>
+                          <p>${original_title}</p>
+                        </td>
+                      </tr>
+                      <tr class="movie-table_row">
+                        <td>
+                          <p class="movie-table_title">Genre</p>
+                        </td>
+                        <td>
+                          <p>${Object.values(genres)}</p>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class="movie-about_container">
+                  <h3 class="movie-about">About</h3>
+                  <p class="movie-about_text">${overview}</p>
+                </div>
+                  <ul class="movie-list">
+                    <li class="movie-item">
+                      <button type="button" class="movie-item_button">ADD TO WATHED</button>
+                    </li>
+                    <li class="movie-item">
+                      <button type="button" class="movie-item_button">ADD TO QUEUE</button>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>`
+}, ", ")
+
+refs.movieContainer.insertAdjacentHTML("beforeend", dataMovie);
+}
