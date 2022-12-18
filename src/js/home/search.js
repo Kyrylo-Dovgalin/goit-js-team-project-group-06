@@ -2,6 +2,7 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { onKeyWord } from '../../api-services/movies-api-service';
 import { createMoviesMarkupKey, galleryConteiner } from './home-movies';
 import { createPagi } from '../pagination';
+export { searchQuery };
 
 const refs = {
   searchForm: document.querySelector('.header__form'),

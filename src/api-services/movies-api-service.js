@@ -18,6 +18,6 @@ async function fetchById(id) {
   return data;
 }
 
-const onKeyWord = async (searchQuery, page=1) => {
+const onKeyWord = async (searchQuery, page) => {
   return await axios.get(`${BASE_URL}search/movie?api_key=${API_KEY}&query=${searchQuery}&page=${page}`);
 };
