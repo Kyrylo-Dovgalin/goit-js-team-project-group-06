@@ -4,7 +4,6 @@ import {
   onKeyWord,
 } from '../../api-services/movies-api-service';
 import { createPagi } from '../pagination';
-import { searchQuery } from './search';
 
 export { galleryConteiner, createMoviesMarkup, createMoviesMarkupKey };
 
@@ -108,10 +107,3 @@ async function createMoviesMarkupKey(searchQuery, page) {
     .join('');
   galleryConteiner.insertAdjacentHTML('beforeend', markup);
 }
-onKeyWord()
-  .then(({ data }) => {
-    createMoviesMarkupKey(data);
-    const totalRes = data.total_results;
-    createPagi(totalRes);
-  })
-  .catch(error => console.log(error));
