@@ -6,3 +6,4 @@ import './js/modalMoviesCard';
 import './js/modal-group';
 import './js/pagination';
 import './js/trailer';
+import './js/home/search';

@@ -1,5 +1,6 @@
 // import axios from 'axios';
 export { refs };
+import { fetchById } from '../api-services/movies-api-service';
 
 const refs = {
   openModal: document.querySelector('.movies__list'),
@@ -80,3 +81,30 @@ function closeModalEscape(event) {
 //     console.error(error);
 //   }
 // };
+
+// Добавляем слушателя событий на список с карточками фильмов
+
+const cardMovie = document.querySelector('.movies__list');
+cardMovie.addEventListener('click', searchIdforMovie);
+
+//Получаем данные по ID фильма и после того как приходят данные по запросу рендерим данные в модалку
+
+async function searchIdforMovie(e) {
+  if (e.target.nodeName === 'P') {
+    const idMovie = e.target.parentElement.parentElement.id;
+    const response = await fetchById(idMovie);
+  }
+  if (e.target.nodeName === 'LI') {
+    const idMovie = e.target.id;
+    const response = await fetchById(idMovie);
+  }
+  if (
+    e.target.nodeName === 'DIV' ||
+    e.target.nodeName === 'IMG' ||
+    e.target.nodeName === 'H2'
+  ) {
+    const idMovie = e.target.parentElement.id;
+    const response = await fetchById(idMovie);
+    console.log(response);
+  }
+}
