@@ -1,7 +1,7 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { onKeyWord } from '../../api-services/movies-api-service';
 import { createMoviesMarkupKey, galleryConteiner } from './home-movies';
-import { createPagi } from '../pagination';
+import { createPagiKey } from '../pagination';
 export { searchQuery };
 
 const refs = {
@@ -31,7 +31,7 @@ async function onSearch(evt) {
       console.dir({ data })
     createMoviesMarkupKey(searchQuery, page);
     const totalRes = data.total_results;
-    createPagi(totalRes);
+    createPagiKey(searchQuery,totalRes);
   })
     .catch(error => console.log(error))
     .finally(() => {
