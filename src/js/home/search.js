@@ -11,6 +11,7 @@ const refs = {
 };
 
 let searchQuery = '';
+let page = 1;
 
 refs.searchForm.addEventListener('submit', onSearch);
 
