@@ -21,6 +21,8 @@ function createPagi(total) {
     createMoviesMarkup(currentPage);
   });
 }
+
+
 function createPagiKey(searchQuery, total) {
   const pagination = new Pagination(
     document.getElementById('tui-pagination-container'),
@@ -39,4 +41,6 @@ function createPagiKey(searchQuery, total) {
     
     createMoviesMarkupKey(searchQuery,currentPage);
   });
+
 }
+
