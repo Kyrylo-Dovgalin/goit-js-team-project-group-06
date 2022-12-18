@@ -1,7 +1,7 @@
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 import { getPopularMovies } from '../api-services/movies-api-service';
-import { galleryConteiner, createMoviesMarkup } from './home/home-movies';
+import { galleryConteiner, createMoviesMarkup, createMoviesMarkupKey } from './home/home-movies';
 export { createPagi, createPagiKey };
 function createPagi(total) {
   const pagination = new Pagination(
