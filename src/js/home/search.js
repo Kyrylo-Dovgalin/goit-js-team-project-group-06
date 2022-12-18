@@ -5,9 +5,9 @@ import { createPagiKey } from '../pagination';
 
 export { searchQuery };
 
-
 const refs = {
   searchForm: document.querySelector('.header__form'),
+  tuiPagination: document.querySelector('.tui-pagination'),
 };
 
 let searchQuery = '';
@@ -23,22 +23,23 @@ async function onSearch(evt) {
 
   if (!searchQuery) {
     notifyInfoSearch();
+    refs.tuiPagination.classList.add('is-hidden');
     return;
   }
 
   await onKeyWord(searchQuery, page)
     .then(({ data }) => {
+      const totalRes = data.total_results;
+      if (!totalRes) {
+        notifyFailure();
+        refs.tuiPagination.classList.add('is-hidden');
+        return;
+      }
 
-//      createMoviesMarkupKey(searchQuery, page); !!!!! commented during conflict by KYRYLO
-    //  const totalRes = data.total_results; !!!!! commented during conflict by KYRYLO
-   //   createPagiKey(searchQuery, totalRes); !!!!! commented during conflict by KYRYLO
-  //  }) !!!!! commented during conflict by KYRYLO
-
-      // console.dir({ data }) !!!!! commented during conflict by KYRYLO
-    createMoviesMarkupKey(searchQuery, page);
-    const totalRes = data.total_results;
-    createPagiKey(searchQuery,totalRes);
-  }).catch(error => console.log(error))
+      createMoviesMarkupKey(searchQuery, page);
+      createPagiKey(searchQuery, totalRes);
+    })
+    .catch(error => console.log(error))
     .finally(() => {
       refs.searchForm.reset();
     });
@@ -46,4 +47,11 @@ async function onSearch(evt) {
 
 const notifyInfoSearch = () => {
   return Notify.info('Please, fill out this field!', { timeout: 4000 });
+};
+
+const notifyFailure = () => {
+  return Notify.failure(
+    'Search result not successful. Enter the correct movie name!',
+    { timeout: 4000 }
+  );
 };
