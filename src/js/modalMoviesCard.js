@@ -94,9 +94,10 @@ function createMarkupMovieCardInModal({poster_path,
   overview,
   popularity,
   id,}) {
-
+  
+ console.log(genres);
   const movieGenres = genres.map(({ name }) => name).join(", ");
-  console.log(genres);
+  
 console.log(movieGenres);
 
   const markup = `<div class="movie-card">
