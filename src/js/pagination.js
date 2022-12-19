@@ -55,7 +55,7 @@ function createPagiKey(searchQuery, total) {
   if (total <= 20) {
     createMoviesMarkupKey(searchQuery, currentPage);
     return
-  }
+  };
   const options = {
     totalItems: total,
     page: 1,
