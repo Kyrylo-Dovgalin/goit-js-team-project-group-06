@@ -48,9 +48,10 @@ const markup = results => {
       ({
         poster_path,
         title,
+        id,
         release_date,
         genre_ids,
-      }) => `<li class="movies__card">
+      }) => `<li class="movies__card" id="${id}">
     <img
       class="movies__card-photo"
       src="${checkImg(poster_path)}"
