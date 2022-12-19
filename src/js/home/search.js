@@ -1,6 +1,6 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { onKeyWord } from '../../api-services/movies-api-service';
-import { createMoviesMarkupKey, galleryConteiner } from './home-movies';
+import { createMoviesMarkupKey, galleryConteiner, page } from './home-movies';
 import { createPagiKey } from '../pagination';
 
 export { searchQuery };
@@ -11,7 +11,6 @@ const refs = {
 };
 
 let searchQuery = '';
-let page = 1;
 
 refs.searchForm.addEventListener('submit', onSearch);
 
@@ -20,24 +19,25 @@ async function onSearch(evt) {
   searchQuery = evt.currentTarget.elements.searchQuery.value;
   page = 1;
   galleryConteiner.innerHTML = '';
+  refs.tuiPagination.classList.add('is-hidden');
 
   if (!searchQuery) {
     notifyInfoSearch();
-    refs.tuiPagination.classList.add('is-hidden');
     return;
   }
 
   await onKeyWord(searchQuery, page)
     .then(({ data }) => {
       const totalRes = data.total_results;
+
       if (!totalRes) {
         notifyFailure();
-        refs.tuiPagination.classList.add('is-hidden');
         return;
       }
-
+      
       createMoviesMarkupKey(searchQuery, page);
       createPagiKey(searchQuery, totalRes);
+      refs.tuiPagination.classList.remove('is-hidden');
     })
     .catch(error => console.log(error))
     .finally(() => {
