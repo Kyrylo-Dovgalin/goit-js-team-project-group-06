@@ -1,6 +1,6 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { onKeyWord } from '../../api-services/movies-api-service';
-import { createMoviesMarkupKey, galleryConteiner, page } from './home-movies';
+import { createMoviesMarkupKey, galleryConteiner } from './home-movies';
 import { createPagiKey } from '../pagination';
 
 export { searchQuery };
@@ -11,6 +11,7 @@ const refs = {
 };
 
 let searchQuery = '';
+let page = 1;
 
 refs.searchForm.addEventListener('submit', onSearch);
 
@@ -34,7 +35,7 @@ async function onSearch(evt) {
         notifyFailure();
         return;
       }
-      
+
       createMoviesMarkupKey(searchQuery, page);
       createPagiKey(searchQuery, totalRes);
       refs.tuiPagination.classList.remove('is-hidden');

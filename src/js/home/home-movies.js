@@ -5,7 +5,7 @@ import {
 } from '../../api-services/movies-api-service';
 import { createPagi } from '../pagination';
 
-export { galleryConteiner, createMoviesMarkup, createMoviesMarkupKey, page };
+export { galleryConteiner, createMoviesMarkup, createMoviesMarkupKey };
 
 const galleryConteiner = document.querySelector('.movies__list');
 let page = 1;
