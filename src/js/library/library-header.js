@@ -19,9 +19,7 @@ function onAddWatchedBtn() {
   const parsedWathcedFilms = JSON.parse(localStorage.getItem('WatchedFilms'));
 
   if (parsedWathcedFilms === null) {
-    Notiflix.Notify.failure('Ты еще ничего не добавил!', {
-      position: 'center-center',
-    });
+    Notiflix.Report.failure('', 'You have to create a list first');
     return;
   } else {
     const arrLocalFilms = parsedWathcedFilms.map(id => {
@@ -39,9 +37,7 @@ function onAddQueueBtn() {
   const parsedQueueFilms = JSON.parse(localStorage.getItem('QueueFilms'));
 
   if (parsedQueueFilms === null) {
-    Notiflix.Notify.failure('Ты еще ничего не добавил!', {
-      position: 'center-center',
-    });
+     Notiflix.Report.failure('', 'You have to create a list first');
     return;
   } else {
     const arrLocalFilms = parsedQueueFilms.map(id => {

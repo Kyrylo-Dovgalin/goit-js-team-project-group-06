@@ -168,19 +168,21 @@ body.no-scroll {
 }
 
 .card__overlay {
-  display: block;
-  visibility: hidden;
-      position: absolute;
-    @media screen and (min-width: $desktop) {
-        visibility: visible;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: $background-header-cl;
-    transform: translateY(100%);
-    transition: transform 250ms $cubic;
-      }
+display: none;
+
+  // display: block;
+  // visibility: hidden;
+  //     position: absolute;
+  //   @media screen and (min-width: $desktop) {
+  //       visibility: visible;
+  //   bottom: 0;
+  //   left: 0;
+  //   width: 100%;
+  //   height: 100%;
+  //   background-color: $background-header-cl;
+  //   transform: translateY(100%);
+  //   transition: transform 250ms $cubic;
+  //     }
 }
 
 .card__item .card__link:hover .card__overlay,

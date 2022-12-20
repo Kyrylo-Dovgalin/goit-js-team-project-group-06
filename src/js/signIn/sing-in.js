@@ -145,7 +145,7 @@ function handleSignUp() {
           position: 'center-top',
         });
       } else if (errorCode == 'auth/email-already-in-use') {
-        Notiflix.Notify.failure('An account with this email already exists!', {
+        Notiflix.Notify.failure('An account with this email already exist!', {
           position: 'center-top',
         });
       } else {
