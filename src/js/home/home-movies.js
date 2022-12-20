@@ -17,15 +17,20 @@ export {
 const galleryConteiner = document.querySelector('.movies__list');
 let page = 1;
 async function createMoviesMarkup(page) {
-  const response = await getPopularMovies(page);
-  const results = response.data.results;
-  const arrGenerId = response.data.results.map(item => item.genre_ids);
+  if (
+    document.querySelector('.header__nav-link.active').textContent === 'Home'
+  ) {
+    const response = await getPopularMovies(page);
+    const results = response.data.results;
+    const arrGenerId = response.data.results.map(item => item.genre_ids);
 
-  const genreResponse = await getGanres();
-  const arrGener = genreResponse.data.genres;
+    const genreResponse = await getGanres();
+    const arrGener = genreResponse.data.genres;
 
-  replaceIdtoGener(arrGener, arrGenerId);
-  markup(results);
+    replaceIdtoGener(arrGener, arrGenerId);
+    markup(results);
+    return;
+  }
 }
 getPopularMovies(page)
   .then(({ data }) => {

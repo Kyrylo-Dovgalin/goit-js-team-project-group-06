@@ -1,5 +1,6 @@
 import { fetchById } from '../../api-services/movies-api-service';
 import { dotaReleaseCheck } from '../home/home-movies';
+
 const addWatchedBtn = document.querySelector(
   '.library__btns-btn[data-add="watched"]'
 );
@@ -11,6 +12,13 @@ import Notiflix from 'notiflix';
 
 addWatchedBtn.addEventListener('click', onAddWatchedBtn);
 addQueueBtn.addEventListener('click', onAddQueueBtn);
+
+if (
+  document.querySelector('.header__nav-link.active').textContent ===
+  'My library'
+) {
+  onAddWatchedBtn();
+}
 
 function onAddWatchedBtn() {
   addQueueBtn.classList.remove('library__btns-btn--active');
@@ -37,7 +45,7 @@ function onAddQueueBtn() {
   const parsedQueueFilms = JSON.parse(localStorage.getItem('QueueFilms'));
 
   if (parsedQueueFilms === null) {
-     Notiflix.Report.failure('', 'You have to create a list first');
+    Notiflix.Report.failure('', 'You have to create a list first');
     return;
   } else {
     const arrLocalFilms = parsedQueueFilms.map(id => {
