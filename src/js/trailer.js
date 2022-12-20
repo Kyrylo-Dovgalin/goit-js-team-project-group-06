@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Notiflix from 'notiflix';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 let idTrailer;
 const trailerButton = document.querySelector(`.button-open-trailer`);
@@ -18,7 +19,7 @@ function clickTrailer(event) {
         '_blank'
       );
     if (data.data.results.length===0) { console.log(data.data.results.length)
-      Notify.failure(`Oops, no trailer for this film`);
+      Notiflix.Report.failure('Ooops 😕', `Can not find trailer for this film`);
       
     }
   });
