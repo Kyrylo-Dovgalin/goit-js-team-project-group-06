@@ -56,12 +56,7 @@ function createPagi(total) {
 }
 
 function createPagiKey(searchQuery, total) {
-  if (total <= 20) {
-    refs.moviesSection.classList.add('movies--padding');
-    createMoviesMarkupKey(searchQuery, currentPage);
-    return;
-  }
-  refs.moviesSection.classList.remove('movies--padding');
+
   const options = {
     totalItems: total,
     page: 1,
