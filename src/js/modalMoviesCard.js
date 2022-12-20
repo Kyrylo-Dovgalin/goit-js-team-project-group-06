@@ -3,67 +3,19 @@ export { refs };
 import { fetchById } from '../api-services/movies-api-service';
 import Notiflix from 'notiflix';
 
+import * as basicLightbox from 'basiclightbox';
+import 'basiclightbox/dist/basicLightbox.min.css';
+
+import { fetchTrailer } from './trailer';
+
 const refs = {
   openModal: document.querySelector('.movies__list'),
   closeModalBtn: document.querySelector('.button-close'),
   backdrop: document.querySelector('.backdrop-movie'),
   movieCard: document.querySelector('.movie-card'),
-  movieContainer: document.querySelector('.modal-movie'),
-  modal: document.querySelector('[data-modal]'),
-  body: document.querySelector('[data-page]'),
-  //
-  watched: document.querySelector('#watched'),
-  queue: document.querySelector('#queue'),
 };
+const instance = basicLightbox.create(refs.backdrop);
 
-refs.openModal.addEventListener('click', openModal);
-refs.watched.addEventListener('click', onAddToWatched);
-
-function openModal(event) {
-  setTimeout(() => {
-    refs.modal.classList.toggle('is-hidden');
-    refs.body.classList.add('no-scroll');
-    refs.closeModalBtn.addEventListener('click', closeModal);
-    refs.backdrop.addEventListener('click', closeModalEscape);
-    refs.backdrop.addEventListener('click', closeModalBackdrop);
-    refs.backdrop.addEventListener('click', closeModal);
-    document.addEventListener('keydown', event => closeModalEscape(event));
-
-    refs.backdrop.classList.remove('is-hidden');
-    refs.backdrop.classList.add('backdrop-movie');
-    refs.movieContainer.classList.remove('is-hidden');
-  }, 500);
-}
-
-function closeModal(event) {
-  refs.backdrop.classList.add('is-hidden');
-  refs.backdrop.firstElementChild.classList.add('is-hidden');
-  refs.closeModalBtn.removeEventListener('click', closeModal);
-  refs.backdrop.removeEventListener('click', closeModal);
-  refs.backdrop.removeEventListener('click', closeModalEscape);
-  document.removeEventListener('keydown', event => closeModalEscape(event));
-  refs.backdrop.classList.remove('backdrop-movie');
-  refs.body.classList.remove('no-scroll');
-  refs.watched.addEventListener('click', onAddToWatched);
-  refs.queue.addEventListener('click', onAddToQueue);
-}
-function closeModalBackdrop(event) {
-  if (event.target.classList.value !== 'backdrop-movie') {
-    return;
-  }
-  closeModal();
-}
-
-function closeModalEscape(event) {
-  if (event.key !== 'Escape') {
-    return;
-  }
-  closeModal();
-}
-
-// Добавляем слушателя событий на список с карточками фильмов
-
-// const cardMovie = document.querySelector('.movies__list');
 refs.openModal.addEventListener('click', searchIdforMovie);
 
 //Получаем данные по ID фильма и после того как приходят данные по запросу рендерим данные в модалку
@@ -90,6 +42,8 @@ async function searchIdforMovie(e) {
     const response = await fetchById(idMovie);
     // Тут уже беру ID фильма на который нажал idMovie
     createMarkupMovieCardInModal(response);
+    instance.show();
+    refs.closeModalBtn.addEventListener('click', instance.close);
 
     document
       .querySelector(`[data-add="wathced"]`)
@@ -98,7 +52,27 @@ async function searchIdforMovie(e) {
     document
       .querySelector(`[data-add="queue"]`)
       .addEventListener('click', onAddToQueue);
+
+    const trailerButton = document.querySelector('.button-open-trailer');
+
+    trailerButton.addEventListener(`click`, clickTrailer);
   }
+}
+
+function clickTrailer(event) {
+  event.preventDefault();
+
+  const filmIdToLS = document.querySelector(`[data-add="wathced"]`).dataset.id;
+
+  fetchTrailer(filmIdToLS).then(data => {
+    window.open(
+      `https://www.youtube.com/watch?v=${data.data.results[0].key}`,
+      '_blank'
+    );
+    if (data.data.results.length === 0) {
+      console.log(data.data.results.length);
+    }
+  });
 }
 
 function createMarkupMovieCardInModal({
@@ -122,7 +96,7 @@ function createMarkupMovieCardInModal({
       src=https://image.tmdb.org/t/p/original${poster_path}
       alt="${title}"
     />
-      <button class="button-open-trailer"></button>
+      <button type="button" class="button-open-trailer"></button>
     </div>
   </div>
   <div class="movie-description">
