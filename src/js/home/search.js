@@ -35,7 +35,10 @@ async function onSearch(evt) {
         notifyFailure();
         return;
       }
-
+       if (totalRes <= 20) {
+         createMoviesMarkupKey(searchQuery, page);
+    return;
+  };
       createMoviesMarkupKey(searchQuery, page);
       createPagiKey(searchQuery, totalRes);
       refs.tuiPagination.classList.remove('is-hidden');
