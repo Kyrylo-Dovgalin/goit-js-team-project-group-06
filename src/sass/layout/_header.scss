@@ -140,9 +140,15 @@
 
   &__nav-list {
     display: flex;
-    gap: 40px;
-    // sign-in
     align-items: center;
+    gap: 15px;
+
+    @media screen and (min-width: $tablet) {
+      gap: 30px;
+    }
+    @media screen and (min-width: $desktop) {
+      gap: 40px;
+    }
   }
 
   &__nav-link {
@@ -288,6 +294,46 @@
   }
 }
 
+.sign-in__button {
+  display: flex;
+  align-items: center;
+  padding: 0px;
+
+  text-transform: uppercase;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.17;
+  color: $white-text-cl;
+
+  background-color: transparent;
+  border: none;
+
+  transition: text-shadow $cubic;
+  cursor: pointer;
+  &:focus,
+  &:hover {
+    text-shadow: 0 0 5px $warning-text-cl, 0 0 10px$warning-text-cl,
+      0 0 15px $warning-text-cl, 0 0 20px $accent-text-cl,
+      0 0 30px $accent-text-cl, 0 0 40px $accent-text-cl,
+      0 0 55px $accent-text-cl, 0 0 75px $accent-text-cl,
+      0px 0px 16px rgba(255, 164, 72, 0);
+  }
+}
+.sign-in__icon {
+  fill: $white-text-cl;
+  transition: fill $cubic;
+  .sign-in__button:hover & {
+    fill: $accent-text-cl;
+  }
+  @media screen and (min-width: $tablet) {
+    margin-left: 6px;
+  }
+}
+
+.sign-in__icon--logout {
+  display: none;
+}
 .library__btns {
   display: flex;
   align-items: center;
