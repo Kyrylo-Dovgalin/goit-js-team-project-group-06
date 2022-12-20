@@ -7,6 +7,10 @@ import {
 } from './home/home-movies';
 export { createPagi, createPagiKey };
 
+const refs = {
+  moviesSection: document.querySelector('.movies'),
+};
+
 function createPagi(total) {
   const options = {
     totalItems: total,
@@ -52,7 +56,7 @@ function createPagi(total) {
 }
 
 function createPagiKey(searchQuery, total) {
- 
+
   const options = {
     totalItems: total,
     page: 1,
