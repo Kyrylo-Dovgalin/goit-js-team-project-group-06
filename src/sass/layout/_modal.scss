@@ -1,3 +1,7 @@
+body.no-scroll {
+  overflow: hidden;
+}
+
 .backdrop-movie {
   position: fixed;
   display: flex;
@@ -12,21 +16,15 @@
   box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
   border-radius: 30px;
   z-index: 100;
-  // visibility: visible;
-  // opacity: 1;
-  // pointer-events: initial;
-
 
   @media screen and (min-width: $tablet) {
     width: 704px;
     height: 552px;
-
   }
 
   @media screen and (min-width: $desktop) {
     width: 806px;
     height: 558px;
-
   }
 }
 
@@ -34,7 +32,6 @@
   opacity: 0;
   pointer-events: none;
   visibility: hidden;
-
 }
 
 .modal-movie {
@@ -53,14 +50,12 @@
   @media screen and (min-width: $tablet) {
     width: 704px;
     height: 552px;
-
   }
 
   @media screen and (min-width: $desktop) {
     width: 806px;
     height: 558px;
     padding: 40px 12px;
-
   }
 }
 
@@ -78,7 +73,7 @@
   align-items: center;
   width: 30px;
   height: 30px;
-  border: 1px solid rgba(0,0,0,.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   background-color: initial;
   border-radius: 50%;
   cursor: pointer;
@@ -94,21 +89,19 @@
   }
 }
 
-
 .movie-card {
   display: flex;
   @media screen and (min-width: $mobile) {
     flex-direction: column;
-    }
+  }
 
-    @media screen and (min-width: $tablet) {
-      flex-direction: row;
-    }
+  @media screen and (min-width: $tablet) {
+    flex-direction: row;
+  }
 
-    @media screen and (min-width: $desktop) {
-      flex-direction: row;
-    }
-
+  @media screen and (min-width: $desktop) {
+    flex-direction: row;
+  }
 }
 
 .movie-card_request {
@@ -119,7 +112,6 @@
 
 .movie-card_img-cover {
   position: relative;
-
 }
 
 .movie-card_photo {
@@ -131,7 +123,6 @@
     padding-top: 48px;
     margin-bottom: 20px;
   }
-
 
   @media screen and (min-width: $tablet) and (max-width: 1279px) {
     width: 264px;
@@ -150,7 +141,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   // background: $background-accent-cl;
   box-sizing: border-box;
   width: 55px;
@@ -163,12 +154,11 @@
   display: block;
   @media screen and (min-width: $mobile) and (max-width: 767px) {
     padding-left: 20px;
-    }
+  }
 
   @media screen and (min-width: $tablet) {
-  display: flex;
-  flex-direction: column;
-
+    display: flex;
+    flex-direction: column;
   }
 }
 
@@ -181,21 +171,21 @@
   @media screen and (min-width: $tablet) and (max-width: 1279px) {
     margin-left: 68px;
     margin-top: 40px;
-    }
+  }
 
-    @media screen and (min-width: $desktop) {
-      margin-left: 16px;
-      }
+  @media screen and (min-width: $desktop) {
+    margin-left: 16px;
+  }
 }
 
 .movie-table {
   @media screen and (min-width: $tablet) {
     margin-left: 68px;
-    }
+  }
 
-    @media screen and (min-width: $desktop) {
-      margin-left: 16px;
-      }
+  @media screen and (min-width: $desktop) {
+    margin-left: 16px;
+  }
 }
 
 .movie-table_row {
@@ -218,22 +208,21 @@
   flex-direction: column;
 
   @media screen and (min-width: $mobile) {
-  width: 240px;
-  height: auto;
+    width: 240px;
+    height: auto;
   }
 
   @media screen and (min-width: $tablet) {
-  width: 264px;
-  height: auto;
-  margin-left: 68px;
+    width: 264px;
+    height: auto;
+    margin-left: 68px;
   }
 
   @media screen and (min-width: $desktop) {
-  width: 391px;
-  height: auto;
-  margin-left: 16px;
+    width: 391px;
+    height: auto;
+    margin-left: 16px;
   }
-
 }
 
 .movie-about {
@@ -250,7 +239,6 @@
   font-weight: 500;
   line-height: 1.67;
   margin-bottom: 20px;
-
 }
 
 .movie-list {
@@ -258,19 +246,18 @@
   display: flex;
 }
 
-
 .movie-item:not(:last-child) {
   @media screen and (min-width: $mobile) and (max-width: 767px) {
     margin-right: 20px;
-    }
+  }
 
   @media screen and (min-width: $tablet) {
-  margin-left: 68px;
-  margin-right: 15px;
+    margin-left: 68px;
+    margin-right: 15px;
   }
 
   @media screen and (min-width: $desktop) {
-  margin-left: 16px;
+    margin-left: 16px;
   }
 }
 
@@ -281,9 +268,10 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
+  cursor: pointer;
   color: $black-text-cl;
   background-color: $white-text-cl;
-  border: 1px solid rgba(0,0,0,1);
+  border: 1px solid rgba(0, 0, 0, 1);
   border-radius: 5px;
   transition: background-color $cubic, color $cubic;
 
@@ -294,18 +282,17 @@
   }
 
   @media screen and (min-width: $mobile) and (max-width: 767px) {
-  width: 110px;
-  height: 44px;
+    width: 110px;
+    height: 44px;
   }
 
   @media screen and (min-width: $tablet) {
-  width: 125px;
-  height: 44px;
+    width: 125px;
+    height: 44px;
   }
 
   @media screen and (min-width: $desktop) {
-  width: 136px;
-  height: 44px;
+    width: 136px;
+    height: 44px;
   }
 }
-

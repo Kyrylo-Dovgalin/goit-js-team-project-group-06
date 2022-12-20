@@ -1,5 +1,11 @@
 .footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+
   padding: 30px 0;
+
   background-color: $background-footer-cl;
 
   &__container--flex {
@@ -34,4 +40,9 @@
       margin-bottom: 10px;
     }
   }
+}
+.heart__icon {
+  animation: Heart;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
 }

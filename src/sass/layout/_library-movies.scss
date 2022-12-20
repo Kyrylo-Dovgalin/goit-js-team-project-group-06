@@ -1,0 +1,21 @@
+/*НУЖНЫЕ ОСТУПЫ ДЛЯ ФИКСИРОВАННОГО ФУТЕРА 
+
+точные значения рассчитывать по готовности футера
+
+к паддингу макета добавить высоту футера
+
+/*ADDED BY KYRYLO NEED TO BE FIXED*/
+
+.library-movies {
+  padding-bottom: 200px; // to fix
+
+  @media screen and (min-width: $tablet) {
+    padding-bottom: 150px; // to fix
+  }
+
+  @media screen and (min-width: $desktop) {
+    padding-bottom: 130px; // to fix
+  }
+}
+
+/*!!!!!!!!!!!!!!!!!*/
