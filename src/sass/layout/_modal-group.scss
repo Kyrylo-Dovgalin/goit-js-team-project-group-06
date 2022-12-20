@@ -48,6 +48,9 @@ body.no-scroll {
   transform: translate(-50%, -50%) scale(1);
   transition: transform 250ms $cubic;
 
+@media screen and (min-width: $tablet)  and (max-width: ($desktop - 1px )) {
+      padding-top: 150px;
+    }
   @media screen and (min-width: $tablet) {
     width: 700px;
     height: 700px;
