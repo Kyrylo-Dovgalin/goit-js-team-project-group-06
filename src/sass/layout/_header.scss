@@ -141,6 +141,8 @@
   &__nav-list {
     display: flex;
     gap: 40px;
+    // sign-in
+    align-items: center;
   }
 
   &__nav-link {
