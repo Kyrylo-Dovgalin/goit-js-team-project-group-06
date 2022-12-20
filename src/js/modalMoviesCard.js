@@ -7,6 +7,7 @@ import * as basicLightbox from 'basiclightbox';
 import 'basiclightbox/dist/basicLightbox.min.css';
 
 import { fetchTrailer } from './trailer';
+import { checkImg } from './home/home-movies';
 
 const refs = {
   openModal: document.querySelector('.movies__list'),
@@ -85,7 +86,7 @@ function createMarkupMovieCardInModal({
     <div class="movie-card_img-cover">
       <img
       class="movie-card_photo"
-      src=https://image.tmdb.org/t/p/original${poster_path}
+      src="${checkImg(poster_path)}"
       alt="${title}"
     />
       <button type="button" class="button-open-trailer"></button>

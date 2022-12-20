@@ -11,6 +11,7 @@ export {
   createMoviesMarkup,
   createMoviesMarkupKey,
   dotaReleaseCheck,
+  checkImg
 };
 
 const galleryConteiner = document.querySelector('.movies__list');
