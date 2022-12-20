@@ -7,6 +7,10 @@ import {
 } from './home/home-movies';
 export { createPagi, createPagiKey };
 
+const refs = {
+  moviesSection: document.querySelector('.movies'),
+};
+
 function createPagi(total) {
   const options = {
     totalItems: total,
@@ -53,9 +57,11 @@ function createPagi(total) {
 
 function createPagiKey(searchQuery, total) {
   if (total <= 20) {
+    refs.moviesSection.classList.add('movies--padding');
     createMoviesMarkupKey(searchQuery, currentPage);
-    return
-  };
+    return;
+  }
+  refs.moviesSection.classList.remove('movies--padding');
   const options = {
     totalItems: total,
     page: 1,
