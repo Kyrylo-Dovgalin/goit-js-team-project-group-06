@@ -158,8 +158,8 @@ function onAddToWatched(e) {
 
   const parsedWathcedFilms = JSON.parse(localStorage.getItem('WatchedFilms'));
   if (parsedWathcedFilms === null) {
-    localStorage.setItem('WatchedFilms', JSON.stringify([filmIdToLS]));
     Notiflix.Notify.success('Film added to WATCHED');
+    localStorage.setItem('WatchedFilms', JSON.stringify([filmIdToLS]));
   }
   if (parsedWathcedFilms.includes(filmIdToLS)) {
     Notiflix.Notify.failure('Watched have this film!');
@@ -167,16 +167,16 @@ function onAddToWatched(e) {
   }
 
   parsedWathcedFilms.push(filmIdToLS);
-  localStorage.setItem('WatchedFilms', JSON.stringify(parsedWathcedFilms));
   Notiflix.Notify.success('Film added to WATCHED');
+  localStorage.setItem('WatchedFilms', JSON.stringify(parsedWathcedFilms));
 }
 function onAddToQueue() {
   const filmIdToLS = document.querySelector(`[data-add="queue"]`).dataset.id;
 
   const parsedQueueFilms = JSON.parse(localStorage.getItem('QueueFilms'));
   if (parsedQueueFilms === null) {
-    localStorage.setItem('QueueFilms', JSON.stringify([filmIdToLS]));
     Notiflix.Notify.success('Film added to QUEUE');
+    localStorage.setItem('QueueFilms', JSON.stringify([filmIdToLS]));
   }
   if (parsedQueueFilms.includes(filmIdToLS)) {
     Notiflix.Notify.failure('Watched have this film!');
@@ -184,6 +184,6 @@ function onAddToQueue() {
   }
 
   parsedQueueFilms.push(filmIdToLS);
-  localStorage.setItem('QueueFilms', JSON.stringify(parsedQueueFilms));
   Notiflix.Notify.success('Film added to QUEUE');
+  localStorage.setItem('QueueFilms', JSON.stringify(parsedQueueFilms));
 }
