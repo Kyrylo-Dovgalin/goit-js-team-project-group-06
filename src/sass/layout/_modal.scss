@@ -152,6 +152,11 @@ body.no-scroll {
   border-radius: 50%;
   border-color: white;
   background-color: transparent;
+  @media screen and (min-width: $mobile) and (max-width: 767px) {
+    width: 55px;
+    height: 55px; 
+    border-width:2px; 
+  }
   &:hover,
   &:focus {
     background-color: $background-accent-cl;
@@ -168,6 +173,9 @@ body.no-scroll {
   left: 3px;
   border-style: solid;
   border-width: 20px 0 20px 40px;
+  @media screen and (min-width: $mobile) and (max-width: 767px) {
+    border-width: 10px 0 10px 20px;
+  }
   border-color: transparent transparent transparent white;
   &:hover,
   &:focus {

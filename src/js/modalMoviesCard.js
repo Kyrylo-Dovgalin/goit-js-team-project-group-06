@@ -122,7 +122,7 @@ function createMarkupMovieCardInModal({
       src=https://image.tmdb.org/t/p/original${poster_path}
       alt="${title}"
     />
-      <button class="button-open-trailer"></button>
+      <button type="button" class="button-open-trailer"></button>
     </div>
   </div>
   <div class="movie-description">
