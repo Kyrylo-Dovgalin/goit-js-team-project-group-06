@@ -13,7 +13,7 @@ const getGanres = async () => {
 };
 // Запрос на поиск данных о фильме ID
 async function fetchById(id) {
-  const responce = await fetch(`${BASE_URL}/movie/${id}?api_key=${API_KEY}`);
+  const responce = await fetch(`${BASE_URL}movie/${id}?api_key=${API_KEY}`);
   const data = await responce.json();
   return data;
 }
