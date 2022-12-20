@@ -1,7 +1,7 @@
 // import axios from 'axios';
 export { refs };
 import { fetchById } from '../api-services/movies-api-service';
-import Notiflix from 'notiflix';
+import Notiflix, { Notify } from 'notiflix';
 
 import * as basicLightbox from 'basiclightbox';
 import 'basiclightbox/dist/basicLightbox.min.css';
@@ -59,12 +59,12 @@ function clickTrailer(event) {
 
   const filmIdToLS = document.querySelector(`[data-add="wathced"]`).dataset.id;
 
-  fetchTrailer(filmIdToLS).then(data => {
-    window.open(
-      `https://www.youtube.com/watch?v=${data.data.results[0].key}`,
-      '_blank'
-    );
+  fetchTrailer(filmIdToLS).then(data => {if (data.data.results.length>0) { window.open(
+    `https://www.youtube.com/watch?v=${data.data.results[0].key}`,
+    '_blank' );}
+    else {Notify.failure('Немає трейлеру'); }
   });
+  
 }
 
 function createMarkupMovieCardInModal({
