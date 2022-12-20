@@ -9,6 +9,7 @@ export { searchQuery };
 const refs = {
   searchForm: document.querySelector('.header__form'),
   tuiPagination: document.querySelector('.tui-pagination'),
+  moviesSection: document.querySelector('.movies'),
 };
 
 let searchQuery = '';
@@ -36,10 +37,13 @@ async function onSearch(evt) {
         notifyFailure();
         return;
       }
-       if (totalRes <= 20) {
-         createMoviesMarkupKey(searchQuery, page);
-    return;
-  };
+      if (totalRes <= 20) {
+        refs.moviesSection.classList.add('movies--padding');
+        createMoviesMarkupKey(searchQuery, page);
+        return;
+      }
+
+      refs.moviesSection.classList.remove('movies--padding');
       createMoviesMarkupKey(searchQuery, page);
       createPagiKey(searchQuery, totalRes);
       refs.tuiPagination.classList.remove('is-hidden');
