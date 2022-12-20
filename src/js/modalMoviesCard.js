@@ -14,6 +14,7 @@ const refs = {
   closeModalBtn: document.querySelector('.button-close'),
   backdrop: document.querySelector('.backdrop-movie'),
   movieCard: document.querySelector('.movie-card'),
+  body: document.querySelector('[data-page]'),
 };
 const instance = basicLightbox.create(refs.backdrop);
 
@@ -39,7 +40,8 @@ async function searchIdforMovie(e) {
     // Тут уже беру ID фильма на который нажал idMovie
     createMarkupMovieCardInModal(response);
     instance.show();
-    refs.closeModalBtn.addEventListener('click', instance.close);
+    refs.closeModalBtn.addEventListener('click', closeModal);
+    document.addEventListener('keydown', event => closeModalEscape(event));
 
     document
       .querySelector(`[data-add="wathced"]`)
@@ -53,6 +55,23 @@ async function searchIdforMovie(e) {
 
     trailerButton.addEventListener(`click`, clickTrailer);
   }
+  refs.body.classList.add('no-scroll');
+}
+
+function closeModal() {
+  refs.body.classList.remove('no-scroll');
+  instance.close();
+  //refs.modal.classList.add('is-hidden');
+  document.removeEventListener('keydown', event => closeModalEscape(event));
+  //refs.modal.removeEventListener('click', closeModalBackdrop);
+  // refs.body.classList.remove('no-scroll');
+}
+
+function closeModalEscape(event) {
+  if (event.key !== 'Escape') {
+    return;
+  }
+  closeModal();
 }
 
 function clickTrailer(event) {
@@ -60,12 +79,16 @@ function clickTrailer(event) {
 
   const filmIdToLS = document.querySelector(`[data-add="wathced"]`).dataset.id;
 
-  fetchTrailer(filmIdToLS).then(data => {if (data.data.results.length>0) { window.open(
-    `https://www.youtube.com/watch?v=${data.data.results[0].key}`,
-    '_blank' );}
-    else {Notify.failure('Sorry, but there is no trailer for this movie'); }
+  fetchTrailer(filmIdToLS).then(data => {
+    if (data.data.results.length > 0) {
+      window.open(
+        `https://www.youtube.com/watch?v=${data.data.results[0].key}`,
+        '_blank'
+      );
+    } else {
+      Notify.failure('Sorry, but there is no trailer for this movie');
+    }
   });
-  
 }
 
 function createMarkupMovieCardInModal({
@@ -155,7 +178,7 @@ function onAddToWatched(e) {
 
   const parsedWathcedFilms = JSON.parse(localStorage.getItem('WatchedFilms'));
   if (parsedWathcedFilms === null) {
-    Notiflix.Report.success('','Film added to WATCHED');
+    Notiflix.Report.success('', 'Film added to WATCHED');
     localStorage.setItem('WatchedFilms', JSON.stringify([filmIdToLS]));
   }
   if (parsedWathcedFilms.includes(filmIdToLS)) {
@@ -167,7 +190,7 @@ function onAddToWatched(e) {
   }
 
   parsedWathcedFilms.push(filmIdToLS);
-  Notiflix.Report.success('','Film added to WATCHED');
+  Notiflix.Report.success('', 'Film added to WATCHED');
   localStorage.setItem('WatchedFilms', JSON.stringify(parsedWathcedFilms));
 }
 function onAddToQueue() {
@@ -185,6 +208,6 @@ function onAddToQueue() {
   }
 
   parsedQueueFilms.push(filmIdToLS);
-   Notiflix.Report.success('', 'Film added to QUEUE');
+  Notiflix.Report.success('', 'Film added to QUEUE');
   localStorage.setItem('QueueFilms', JSON.stringify(parsedQueueFilms));
 }
