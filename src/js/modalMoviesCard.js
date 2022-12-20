@@ -125,7 +125,7 @@ function createMarkupMovieCardInModal({
           </td>
           <td>
             <p>
-              <span movie-table_vote>${vote_average} / ${vote_count}</span>
+              <span class= "movie-table_vote"> <span class= "movie-table_vote_aver"> ${vote_average.toFixed(1)} </span> / ${vote_count}</span>
             </p>
           </td>
         </tr>
@@ -142,7 +142,7 @@ function createMarkupMovieCardInModal({
             <p class="movie-table_title">Original Title</p>
           </td>
           <td>
-            <p>${original_title}</p>
+             <p class="movie-table_title_ori">${original_title}</p>
           </td>
         </tr>
         <tr class="movie-table_row">

@@ -6,9 +6,11 @@ body.no-scroll {
   background-color: #fff;
   width: 280px;
   border-radius: 20px;
+  padding: 48px 20px 40px;
 
   @media screen and (min-width: $tablet) {
     width: 704px;
+    padding: 40px 72px 40px 36px;
   }
 
   @media screen and (min-width: $desktop) {
@@ -19,6 +21,7 @@ body.no-scroll {
 
 .button-close {
   position: absolute;
+  z-index: 100;
   top: 8px;
   right: 8px;
   display: flex;
@@ -70,19 +73,17 @@ body.no-scroll {
 
 .movie-card_photo {
   display: flex;
-
+border-radius: 4px;
   @media screen and (min-width: $mobile) and (max-width: 767px) {
     width: 240px;
     height: 357px;
-    padding-top: 48px;
+
     margin-bottom: 20px;
   }
 
   @media screen and (min-width: $tablet) and (max-width: 1279px) {
     width: 264px;
     height: 374px;
-    padding-left: 36px;
-    padding-top: 40px;
   }
 
   @media screen and (min-width: $desktop) {
@@ -140,9 +141,8 @@ body.no-scroll {
 
 .movie-description {
   display: block;
-  @media screen and (min-width: $mobile) and (max-width: 767px) {
-    padding-left: 20px;
-  }
+    font-family: $main-font;
+      font-size: 12px;
 
   @media screen and (min-width: $tablet) {
     display: flex;
@@ -155,10 +155,10 @@ body.no-scroll {
   font-size: 30px;
   line-height: 1.17;
   margin-bottom: 20px;
-
+text-transform: uppercase;
   @media screen and (min-width: $tablet) and (max-width: 1279px) {
     margin-left: 68px;
-    margin-top: 40px;
+    
   }
 
   @media screen and (min-width: $desktop) {
@@ -190,7 +190,15 @@ body.no-scroll {
   line-height: 1.33;
   color: $modal-text-cl;
 }
+.movie-table_vote_aver {
+  background-color: $accent-text-cl;
+  color: #fff;
 
+  border-radius: 4px;
+}
+.movie-table_title_ori {
+  text-transform: uppercase;
+}
 .movie-about_container {
   display: flex;
   flex-direction: column;
@@ -227,6 +235,17 @@ body.no-scroll {
   font-weight: 500;
   line-height: 1.67;
   margin-bottom: 20px;
+    @media screen and (max-width: 767px) {
+        max-height: 100px;
+        overflow: auto;
+      }
+    
+      ;
+    
+      @media screen and (min-width: 767px) and (max-width: $desktop) {
+        max-height: 236px;
+        overflow: auto;
+      }
 }
 
 .movie-list {
