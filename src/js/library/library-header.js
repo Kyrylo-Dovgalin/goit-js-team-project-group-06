@@ -27,7 +27,6 @@ function onAddQueueBtn() {
   addQueueBtn.classList.add('library__btns-btn--active');
   document.querySelector('.library-list').innerHTML = '';
   const parsedQueueFilms = JSON.parse(localStorage.getItem('QueueFilms'));
-  console.log('🚀 ~ onAddQueueBtn ~ parsedQueueFilms', parsedQueueFilms);
 
   const arrLocalFilms = parsedQueueFilms.map(id => {
     return fetchById(id).then(r => {

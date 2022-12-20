@@ -21,7 +21,6 @@ refs.openModal.addEventListener('click', searchIdforMovie);
 //Получаем данные по ID фильма и после того как приходят данные по запросу рендерим данные в модалку
 
 async function searchIdforMovie(e) {
-  console.log('нажал на фильм');
   if (e.target.nodeName === 'LI') {
     const idMovie = e.target.id;
     const response = await fetchById(idMovie);
@@ -65,9 +64,6 @@ function clickTrailer(event) {
       `https://www.youtube.com/watch?v=${data.data.results[0].key}`,
       '_blank'
     );
-    if (data.data.results.length === 0) {
-      console.log(data.data.results.length);
-    }
   });
 }
 
