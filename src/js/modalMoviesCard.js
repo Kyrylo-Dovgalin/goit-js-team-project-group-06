@@ -16,7 +16,11 @@ const refs = {
   movieCard: document.querySelector('.movie-card'),
   body: document.querySelector('[data-page]'),
 };
-const instance = basicLightbox.create(refs.backdrop);
+const instance = basicLightbox.create(refs.backdrop, {
+  onClose: instance => {
+    refs.body.classList.remove('no-scroll');
+  },
+});
 
 refs.openModal.addEventListener('click', searchIdforMovie);
 
@@ -60,11 +64,8 @@ async function searchIdforMovie(e) {
 
 function closeModal() {
   refs.body.classList.remove('no-scroll');
-  instance.close();
-  //refs.modal.classList.add('is-hidden');
+  instance.close(() => refs.body.classList.remove('no-scroll'));
   document.removeEventListener('keydown', event => closeModalEscape(event));
-  //refs.modal.removeEventListener('click', closeModalBackdrop);
-  // refs.body.classList.remove('no-scroll');
 }
 
 function closeModalEscape(event) {
