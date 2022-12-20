@@ -6,6 +6,8 @@ const addQueueBtn = document.querySelector(
   '.library__btns-btn[data-add="queue"]'
 );
 
+import Notiflix from 'notiflix';
+
 addWatchedBtn.addEventListener('click', onAddWatchedBtn);
 addQueueBtn.addEventListener('click', onAddQueueBtn);
 
@@ -15,11 +17,18 @@ function onAddWatchedBtn() {
   document.querySelector('.library-list').innerHTML = '';
   const parsedWathcedFilms = JSON.parse(localStorage.getItem('WatchedFilms'));
 
-  const arrLocalFilms = parsedWathcedFilms.map(id => {
-    return fetchById(id).then(r => {
-      markup(r);
+  if (parsedWathcedFilms === null) {
+    Notiflix.Notify.failure('Ты еще ничего не добавил!', {
+      position: 'center-center',
     });
-  });
+    return;
+  } else {
+    const arrLocalFilms = parsedWathcedFilms.map(id => {
+      return fetchById(id).then(r => {
+        markup(r);
+      });
+    });
+  }
 }
 
 function onAddQueueBtn() {
@@ -28,11 +37,18 @@ function onAddQueueBtn() {
   document.querySelector('.library-list').innerHTML = '';
   const parsedQueueFilms = JSON.parse(localStorage.getItem('QueueFilms'));
 
-  const arrLocalFilms = parsedQueueFilms.map(id => {
-    return fetchById(id).then(r => {
-      markup(r);
+  if (parsedQueueFilms === null) {
+    Notiflix.Notify.failure('Ты еще ничего не добавил!', {
+      position: 'center-center',
     });
-  });
+    return;
+  } else {
+    const arrLocalFilms = parsedQueueFilms.map(id => {
+      return fetchById(id).then(r => {
+        markup(r);
+      });
+    });
+  }
 }
 
 function markup(r) {
