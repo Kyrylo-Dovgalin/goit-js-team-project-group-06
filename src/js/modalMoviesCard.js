@@ -22,11 +22,6 @@ refs.openModal.addEventListener('click', searchIdforMovie);
 
 async function searchIdforMovie(e) {
   console.log('нажал на фильм');
-  if (e.target.nodeName === 'P') {
-    const idMovie = e.target.parentElement.parentElement.id;
-    const response = await fetchById(idMovie);
-    createMarkupMovieCardInModal(response);
-  }
   if (e.target.nodeName === 'LI') {
     const idMovie = e.target.id;
     const response = await fetchById(idMovie);
@@ -36,7 +31,8 @@ async function searchIdforMovie(e) {
   if (
     e.target.nodeName === 'DIV' ||
     e.target.nodeName === 'IMG' ||
-    e.target.nodeName === 'H2'
+    e.target.nodeName === 'H2' ||
+    e.target.nodeName === 'P'
   ) {
     const idMovie = e.target.parentElement.id;
     const response = await fetchById(idMovie);
@@ -163,6 +159,7 @@ function onAddToWatched(e) {
   const parsedWathcedFilms = JSON.parse(localStorage.getItem('WatchedFilms'));
   if (parsedWathcedFilms === null) {
     localStorage.setItem('WatchedFilms', JSON.stringify([filmIdToLS]));
+    Notiflix.Notify.success('Film added to WATCHED');
   }
   if (parsedWathcedFilms.includes(filmIdToLS)) {
     Notiflix.Notify.failure('Watched have this film!');
@@ -171,6 +168,7 @@ function onAddToWatched(e) {
 
   parsedWathcedFilms.push(filmIdToLS);
   localStorage.setItem('WatchedFilms', JSON.stringify(parsedWathcedFilms));
+  Notiflix.Notify.success('Film added to WATCHED');
 }
 function onAddToQueue() {
   const filmIdToLS = document.querySelector(`[data-add="queue"]`).dataset.id;
@@ -178,6 +176,7 @@ function onAddToQueue() {
   const parsedQueueFilms = JSON.parse(localStorage.getItem('QueueFilms'));
   if (parsedQueueFilms === null) {
     localStorage.setItem('QueueFilms', JSON.stringify([filmIdToLS]));
+    Notiflix.Notify.success('Film added to QUEUE');
   }
   if (parsedQueueFilms.includes(filmIdToLS)) {
     Notiflix.Notify.failure('Watched have this film!');
@@ -186,4 +185,5 @@ function onAddToQueue() {
 
   parsedQueueFilms.push(filmIdToLS);
   localStorage.setItem('QueueFilms', JSON.stringify(parsedQueueFilms));
+  Notiflix.Notify.success('Film added to QUEUE');
 }

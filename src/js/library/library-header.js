@@ -10,6 +10,8 @@ addWatchedBtn.addEventListener('click', onAddWatchedBtn);
 addQueueBtn.addEventListener('click', onAddQueueBtn);
 
 function onAddWatchedBtn() {
+  addQueueBtn.classList.remove('library__btns-btn--active');
+  addWatchedBtn.classList.add('library__btns-btn--active');
   document.querySelector('.library-list').innerHTML = '';
   const parsedWathcedFilms = JSON.parse(localStorage.getItem('WatchedFilms'));
 
@@ -21,6 +23,8 @@ function onAddWatchedBtn() {
 }
 
 function onAddQueueBtn() {
+  addWatchedBtn.classList.remove('library__btns-btn--active');
+  addQueueBtn.classList.add('library__btns-btn--active');
   document.querySelector('.library-list').innerHTML = '';
   const parsedQueueFilms = JSON.parse(localStorage.getItem('QueueFilms'));
   console.log('🚀 ~ onAddQueueBtn ~ parsedQueueFilms', parsedQueueFilms);

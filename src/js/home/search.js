@@ -1,4 +1,5 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import Notiflix from 'notiflix';
 import { onKeyWord } from '../../api-services/movies-api-service';
 import { createMoviesMarkupKey, galleryConteiner } from './home-movies';
 import { createPagiKey } from '../pagination';
@@ -47,12 +48,21 @@ async function onSearch(evt) {
 }
 
 const notifyInfoSearch = () => {
-  return Notify.info('Please, fill out this field!', { timeout: 4000 });
+  return Notiflix.Report.info(
+    'Empty query 🧐',
+    'Please, fill out this field!',
+    {
+      timeout: 4000,
+    }
+  );
 };
 
 const notifyFailure = () => {
-  return Notify.failure(
-    'Search result not successful. Enter the correct movie name!',
-    { timeout: 4000 }
+  return Notiflix.Report.failure(
+    'Ooops 😕',
+    'Search result not successful. Enter the correct movie name',
+    {
+      timeout: 4000,
+    }
   );
 };

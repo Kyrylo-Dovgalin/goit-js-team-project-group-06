@@ -3,6 +3,7 @@ import {
   getGanres,
   onKeyWord,
 } from '../../api-services/movies-api-service';
+import Notiflix from 'notiflix';
 import { createPagi } from '../pagination';
 
 export { galleryConteiner, createMoviesMarkup, createMoviesMarkupKey };
@@ -26,7 +27,13 @@ getPopularMovies(page)
     const totalRes = data.total_results;
     createPagi(totalRes);
   })
-  .catch(error => console.log(error));
+  .catch(error => {
+    return Notiflix.Report.failure(
+      '😔',
+      'Something went wrong. We can not find popular movies',
+    );
+    console.log(error)
+  });
 
 async function createMoviesMarkupKey(searchQuery, page) {
   const response = await onKeyWord(searchQuery, page);

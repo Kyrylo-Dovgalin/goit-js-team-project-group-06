@@ -329,10 +329,7 @@
   display: flex;
 }
 
-.disabledMoveButton {
-  display: none;
-  background-color: white;
-}
+
 
 .tui-page-btn.tui-is-disabled.tui-first.disabledMoveButton {
   background-color: white;
@@ -356,4 +353,18 @@
 .tui-page-btn.tui-is-disabled.tui-next.disabledMoveButton,
 .tui-page-btn.tui-is-disabled.tui-last.disabledMoveButton {
   display: none;
+}
+.disabledMoveButton {
+    position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      border: 0;
+      padding: 0;
+    
+      white-space: nowrap;
+      clip-path: inset(100%);
+      clip: rect(0 0 0 0);
+      overflow: hidden;
+    
 }
