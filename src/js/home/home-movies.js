@@ -6,7 +6,12 @@ import {
 import Notiflix from 'notiflix';
 import { createPagi } from '../pagination';
 
-export { galleryConteiner, createMoviesMarkup, createMoviesMarkupKey };
+export {
+  galleryConteiner,
+  createMoviesMarkup,
+  createMoviesMarkupKey,
+  dotaReleaseCheck,
+};
 
 const galleryConteiner = document.querySelector('.movies__list');
 let page = 1;
@@ -30,9 +35,9 @@ getPopularMovies(page)
   .catch(error => {
     return Notiflix.Report.failure(
       '😔',
-      'Something went wrong. We can not find popular movies',
+      'Something went wrong. We can not find popular movies'
     );
-    console.log(error)
+    console.log(error);
   });
 
 async function createMoviesMarkupKey(searchQuery, page) {

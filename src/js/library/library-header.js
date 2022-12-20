@@ -1,4 +1,5 @@
 import { fetchById } from '../../api-services/movies-api-service';
+import { dotaReleaseCheck } from '../home/home-movies';
 const addWatchedBtn = document.querySelector(
   '.library__btns-btn[data-add="watched"]'
 );
@@ -67,7 +68,7 @@ function markup(r) {
       <p class="movies__card-genres">${genres.reduce((acc, el) => {
         acc += `${el.name}, `;
         return acc;
-      }, '')} | ${release_date}</p>
+      }, '')} | ${dotaReleaseCheck(release_date)}</p>
     </li>`;
 
   return document
