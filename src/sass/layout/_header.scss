@@ -315,12 +315,10 @@
   border: 1px solid $white-text-cl;
   border-radius: 5px;
   transition: box-shadow $cubic, border $cubic, background-color $cubic;
-
-  &:focus,
-  &:hover {
-    outline: none;
-    background-color: $background-accent-cl;
-    border: 1px solid $background-accent-cl;
-    box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
-  }
+}
+.library__btns-btn--active {
+  outline: none;
+  background-color: $background-accent-cl;
+  border: 1px solid $background-accent-cl;
+  box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
 }
