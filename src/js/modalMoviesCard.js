@@ -62,7 +62,7 @@ function clickTrailer(event) {
   fetchTrailer(filmIdToLS).then(data => {if (data.data.results.length>0) { window.open(
     `https://www.youtube.com/watch?v=${data.data.results[0].key}`,
     '_blank' );}
-    else {Notify.failure('Немає трейлеру'); }
+    else {Notify.failure('Sorry, but there is no trailer for this movie'); }
   });
   
 }
