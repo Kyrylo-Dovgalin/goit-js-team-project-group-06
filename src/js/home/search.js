@@ -1,4 +1,4 @@
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
+
 import Notiflix from 'notiflix';
 import { onKeyWord } from '../../api-services/movies-api-service';
 import { createMoviesMarkupKey, galleryConteiner } from './home-movies';

@@ -1,6 +1,4 @@
 import axios from 'axios';
-import Notiflix from 'notiflix';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
 export { fetchTrailer, clickTrailer };
 let idTrailer;
 

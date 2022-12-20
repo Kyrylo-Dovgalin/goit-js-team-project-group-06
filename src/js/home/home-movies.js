@@ -32,13 +32,7 @@ getPopularMovies(page)
     const totalRes = data.total_results;
     createPagi(totalRes);
   })
-  .catch(error => {
-    return Notiflix.Report.failure(
-      '😔',
-      'Something went wrong. We can not find popular movies'
-    );
-    console.log(error);
-  });
+  .catch(error => console.log(error));
 
 async function createMoviesMarkupKey(searchQuery, page) {
   const response = await onKeyWord(searchQuery, page);
