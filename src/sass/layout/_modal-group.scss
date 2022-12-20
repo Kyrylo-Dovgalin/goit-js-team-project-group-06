@@ -172,8 +172,7 @@ body.no-scroll {
   visibility: hidden;
       position: absolute;
     @media screen and (min-width: $desktop) {
-  display: block;
-    position: absolute;
+        visibility: visible;
     bottom: 0;
     left: 0;
     width: 100%;
