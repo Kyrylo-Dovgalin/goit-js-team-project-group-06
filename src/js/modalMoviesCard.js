@@ -70,11 +70,6 @@ refs.openModal.addEventListener('click', searchIdforMovie);
 
 async function searchIdforMovie(e) {
   console.log('нажал на фильм');
-  if (e.target.nodeName === 'P') {
-    const idMovie = e.target.parentElement.parentElement.id;
-    const response = await fetchById(idMovie);
-    createMarkupMovieCardInModal(response);
-  }
   if (e.target.nodeName === 'LI') {
     const idMovie = e.target.id;
     const response = await fetchById(idMovie);
@@ -84,7 +79,8 @@ async function searchIdforMovie(e) {
   if (
     e.target.nodeName === 'DIV' ||
     e.target.nodeName === 'IMG' ||
-    e.target.nodeName === 'H2'
+    e.target.nodeName === 'H2' ||
+    e.target.nodeName === 'P'
   ) {
     const idMovie = e.target.parentElement.id;
     const response = await fetchById(idMovie);
