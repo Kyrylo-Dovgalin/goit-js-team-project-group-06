@@ -1,6 +1,7 @@
 // import axios from 'axios';
 export { refs };
 import { fetchById } from '../api-services/movies-api-service';
+import Notiflix from 'notiflix';
 
 const refs = {
   openModal: document.querySelector('.movies__list'),
@@ -10,9 +11,13 @@ const refs = {
   movieContainer: document.querySelector('.modal-movie'),
   modal: document.querySelector('[data-modal]'),
   body: document.querySelector('[data-page]'),
+  //
+  watched: document.querySelector('#watched'),
+  queue: document.querySelector('#queue'),
 };
 
 refs.openModal.addEventListener('click', openModal);
+refs.watched.addEventListener('click', onAddToWatched);
 
 function openModal(event) {
   setTimeout(() => {
@@ -23,11 +28,11 @@ function openModal(event) {
     refs.backdrop.addEventListener('click', closeModalBackdrop);
     refs.backdrop.addEventListener('click', closeModal);
     document.addEventListener('keydown', event => closeModalEscape(event));
+
     refs.backdrop.classList.remove('is-hidden');
     refs.backdrop.classList.add('backdrop-movie');
     refs.movieContainer.classList.remove('is-hidden');
   }, 500);
-
 }
 
 function closeModal(event) {
@@ -39,8 +44,9 @@ function closeModal(event) {
   document.removeEventListener('keydown', event => closeModalEscape(event));
   refs.backdrop.classList.remove('backdrop-movie');
   refs.body.classList.remove('no-scroll');
+  refs.watched.addEventListener('click', onAddToWatched);
+  refs.queue.addEventListener('click', onAddToQueue);
 }
-
 function closeModalBackdrop(event) {
   if (event.target.classList.value !== 'backdrop-movie') {
     return;
@@ -63,6 +69,7 @@ refs.openModal.addEventListener('click', searchIdforMovie);
 //Получаем данные по ID фильма и после того как приходят данные по запросу рендерим данные в модалку
 
 async function searchIdforMovie(e) {
+  console.log('нажал на фильм');
   if (e.target.nodeName === 'P') {
     const idMovie = e.target.parentElement.parentElement.id;
     const response = await fetchById(idMovie);
@@ -71,6 +78,7 @@ async function searchIdforMovie(e) {
   if (e.target.nodeName === 'LI') {
     const idMovie = e.target.id;
     const response = await fetchById(idMovie);
+
     createMarkupMovieCardInModal(response);
   }
   if (
@@ -80,12 +88,21 @@ async function searchIdforMovie(e) {
   ) {
     const idMovie = e.target.parentElement.id;
     const response = await fetchById(idMovie);
+    // Тут уже беру ID фильма на который нажал idMovie
     createMarkupMovieCardInModal(response);
 
+    document
+      .querySelector(`[data-add="wathced"]`)
+      .addEventListener('click', onAddToWatched);
+
+    document
+      .querySelector(`[data-add="queue"]`)
+      .addEventListener('click', onAddToQueue);
   }
 }
 
-function createMarkupMovieCardInModal({poster_path,
+function createMarkupMovieCardInModal({
+  poster_path,
   original_title,
   title,
   vote_average,
@@ -93,12 +110,9 @@ function createMarkupMovieCardInModal({poster_path,
   genres,
   overview,
   popularity,
-  id,}) {
-  
- console.log(genres);
-  const movieGenres = genres.map(({ name }) => name).join(", ");
-  
-console.log(movieGenres);
+  id,
+}) {
+  const movieGenres = genres.map(({ name }) => name).join(', ');
 
   const markup = `<div class="movie-card">
   <div class="movie-card_request">
@@ -157,16 +171,45 @@ console.log(movieGenres);
   </div>
     <ul class="movie-list">
       <li class="movie-item">
-        <button type="button" class="movie-item_button" data-id=${id}>ADD TO WATHED</button>
+        <button type="button" class="movie-item_button" data-id=${id} data-add="wathced">ADD TO WATHED</button>
       </li>
       <li class="movie-item">
-        <button type="button" class="movie-item_button" data-id=${id}>ADD TO QUEUE</button>
+        <button type="button" class="movie-item_button" data-id=${id} data-add="queue">ADD TO QUEUE</button>
        </li>
     </ul>
   </div>
 </div>`;
 
-refs.movieCard.innerHTML = markup;
+  refs.movieCard.innerHTML = markup;
 }
 
+function onAddToWatched(e) {
+  const filmIdToLS = document.querySelector(`[data-add="wathced"]`).dataset.id;
 
+  const parsedWathcedFilms = JSON.parse(localStorage.getItem('WatchedFilms'));
+  if (parsedWathcedFilms === null) {
+    localStorage.setItem('WatchedFilms', JSON.stringify([filmIdToLS]));
+  }
+  if (parsedWathcedFilms.includes(filmIdToLS)) {
+    Notiflix.Notify.failure('Watched have this film!');
+    return;
+  }
+
+  parsedWathcedFilms.push(filmIdToLS);
+  localStorage.setItem('WatchedFilms', JSON.stringify(parsedWathcedFilms));
+}
+function onAddToQueue() {
+  const filmIdToLS = document.querySelector(`[data-add="queue"]`).dataset.id;
+
+  const parsedQueueFilms = JSON.parse(localStorage.getItem('QueueFilms'));
+  if (parsedQueueFilms === null) {
+    localStorage.setItem('QueueFilms', JSON.stringify([filmIdToLS]));
+  }
+  if (parsedQueueFilms.includes(filmIdToLS)) {
+    Notiflix.Notify.failure('Watched have this film!');
+    return;
+  }
+
+  parsedQueueFilms.push(filmIdToLS);
+  localStorage.setItem('QueueFilms', JSON.stringify(parsedQueueFilms));
+}

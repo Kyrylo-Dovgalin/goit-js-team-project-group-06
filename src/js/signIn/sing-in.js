@@ -22,6 +22,9 @@ const refs = {
   signInModal: document.querySelector('.signIn__modal'),
   signInBtn: document.querySelector('#signIn-form__button'),
   signUpBtn: document.querySelector('#signUp__button'),
+  //
+  watched: document.querySelector('#watched'),
+  queue: document.querySelector('#queue'),
 };
 const instance = basicLightbox.create(refs.signInModal);
 
@@ -29,6 +32,8 @@ refs.headerSignInBtn.addEventListener('click', onModalInstance);
 refs.signInForm.addEventListener('submit', toggleSignIn);
 refs.signUpBtn.addEventListener('click', handleSignUp);
 refs.forgotPass.addEventListener('click', sendPasswordReset);
+refs.watched.addEventListener('click', onAddToWatched);
+refs.queue.addEventListener('click', onAddToQueue);
 
 const firebaseConfig = {
   apiKey: 'AIzaSyD_vHZTNWzsl8fvwM88Z6p9B5fMd3g8HaA',
@@ -214,6 +219,13 @@ function initApp() {
       document.querySelector('.header__nav-signIn').textContent = 'Sign in';
     }
   });
+}
+
+function onAddToWatched(e) {
+  console.log(`helllo mark`);
+}
+function onAddToQueue() {
+  console.log(`queue`);
 }
 
 window.onload = function () {
