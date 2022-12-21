@@ -1,6 +1,6 @@
 import { fetchById } from '../../api-services/movies-api-service';
 import { dotaReleaseCheck } from '../home/home-movies';
-
+import { refs } from '../modalMoviesCard';
 const addWatchedBtn = document.querySelector(
   '.library__btns-btn[data-add="watched"]'
 );
@@ -79,3 +79,27 @@ function markup(r) {
     .querySelector('.library-list')
     .insertAdjacentHTML('beforeend', markup);
 }
+
+refs.closeModalBtn.addEventListener('click', updateMarkup);
+
+function updateMarkup() {
+  console.log("im here")
+  if (addWatchedBtn.classList.contains('library__btns-btn--active')) {
+  document.querySelector('.library-list').innerHTML = ''
+    const parsedWathcedFilms = JSON.parse(localStorage.getItem('WatchedFilms'));
+  const arrLocalFilms = parsedWathcedFilms.map(id => {
+  return fetchById(id).then(r => {
+  markup(r);
+      });
+  });
+    return
+  }
+
+document.querySelector('.library-list').innerHTML = '';
+  const parsedQueueFilms = JSON.parse(localStorage.getItem('QueueFilms'));
+  const arrLocalFilms = parsedQueueFilms.map(id => {
+      return fetchById(id).then(r => {
+        markup(r);
+      });
+    });
+  }
