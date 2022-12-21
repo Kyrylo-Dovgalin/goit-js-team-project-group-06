@@ -4,10 +4,14 @@ body.no-scroll {
 
 .modal-movie {
   background-color: #fff;
-  width: 280px;
+  
   border-radius: 20px;
   padding: 48px 20px 40px;
-
+scroll-behavior: smooth;
+  overflow-y: scroll;
+  @media screen and (max-width: 767px){width: 85dvw;
+    height: 95dvh;}
+ 
   @media screen and (min-width: $tablet) {
     width: 704px;
     padding: 40px 72px 40px 36px;
@@ -140,8 +144,11 @@ body.no-scroll {
 
 .movie-description {
   display: block;
+  margin-left: auto;
+  margin-right: auto;
   font-family: $main-font;
   font-size: 12px;
+  width: 90%;
 
   @media screen and (min-width: $tablet) {
     display: flex;
@@ -203,12 +210,12 @@ body.no-scroll {
   flex-direction: column;
 
   @media screen and (min-width: $mobile) {
-    width: 240px;
+    // width: 240px;
     height: auto;
   }
 
   @media screen and (min-width: $tablet) {
-    width: 264px;
+     width: 264px;
     height: auto;
     margin-left: 68px;
   }
@@ -234,6 +241,7 @@ body.no-scroll {
   font-weight: 500;
   line-height: 1.67;
   margin-bottom: 20px;
+  width: 100%;
   @media screen and (max-width: 767px) {
     max-height: 100px;
     overflow: auto;
@@ -248,6 +256,7 @@ body.no-scroll {
 .movie-list {
   @extend %list;
   display: flex;
+justify-content: center;
 }
 
 .movie-item:not(:last-child) {
