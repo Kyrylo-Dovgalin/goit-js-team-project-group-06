@@ -18,12 +18,19 @@ if (
   'My library'
 ) {
   onAddWatchedBtn();
-  
+  // document
+  //   .querySelector(`[data-remove="wathced"]`)
+  //   .addEventListener('click', onRemoveFromWatched);
+
+  // document
+  //   .querySelector(`[data-remove="queue"]`)
+  //   .addEventListener('click', onRemoveFromQueue);
 }
 
 function onAddWatchedBtn() {
   addQueueBtn.classList.remove('library__btns-btn--active');
   addWatchedBtn.classList.add('library__btns-btn--active');
+
   document.querySelector('.library-list').innerHTML = '';
   const parsedWathcedFilms = JSON.parse(localStorage.getItem('WatchedFilms'));
 
@@ -73,13 +80,13 @@ function markup(r) {
       <p class="movies__card-genres">${movieGenres} | ${dotaReleaseCheck(release_date)}</p>
     </li>`;
 
-  return document
+  document
     .querySelector('.library-list')
     .insertAdjacentHTML('beforeend', markup);
 }
 
 refs.closeModalBtn.addEventListener('click', updateMarkup);
-document.addEventListener('keydown', event => closeModalEscape(event))
+document.addEventListener('keydown', event => closeModalEscape(event));
 function closeModalEscape(event) {
   if (event.key !== 'Escape') {
     return;
@@ -89,21 +96,21 @@ function closeModalEscape(event) {
 
 function updateMarkup() {
   if (addWatchedBtn.classList.contains('library__btns-btn--active')) {
-  document.querySelector('.library-list').innerHTML = ''
+    document.querySelector('.library-list').innerHTML = '';
     const parsedWathcedFilms = JSON.parse(localStorage.getItem('WatchedFilms'));
-  const arrLocalFilms = parsedWathcedFilms.map(id => {
-  return fetchById(id).then(r => {
-  markup(r);
-      });
-  });
-    return
-  }
-
-document.querySelector('.library-list').innerHTML = '';
-  const parsedQueueFilms = JSON.parse(localStorage.getItem('QueueFilms'));
-  const arrLocalFilms = parsedQueueFilms.map(id => {
+    const arrLocalFilms = parsedWathcedFilms.map(id => {
       return fetchById(id).then(r => {
         markup(r);
       });
     });
+    return;
   }
+
+  document.querySelector('.library-list').innerHTML = '';
+  const parsedQueueFilms = JSON.parse(localStorage.getItem('QueueFilms'));
+  const arrLocalFilms = parsedQueueFilms.map(id => {
+    return fetchById(id).then(r => {
+      markup(r);
+    });
+  });
+}

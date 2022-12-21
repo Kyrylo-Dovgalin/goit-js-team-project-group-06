@@ -11,7 +11,7 @@ export {
   createMoviesMarkup,
   createMoviesMarkupKey,
   dotaReleaseCheck,
-  checkImg
+  checkImg,
 };
 
 const galleryConteiner = document.querySelector('.movies__list');
@@ -29,6 +29,7 @@ async function createMoviesMarkup(page) {
 
     replaceIdtoGener(arrGener, arrGenerId);
     markup(results);
+
     return;
   }
 }
