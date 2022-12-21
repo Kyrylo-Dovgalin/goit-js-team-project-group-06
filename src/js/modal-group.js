@@ -1,6 +1,5 @@
 const refs = {
-  // openModalBtn: document.querySelector('[data-modal-open]'), commented by Kyrylo
-  openModalBtn: document.querySelector('.js-team-modal-open'), // added by KYRYLO
+  openModalBtn: document.querySelector('.js-team-modal-open'),
   closeModalBtn: document.querySelector('[data-modal-close]'),
   modal: document.querySelector('[data-modal-group]'),
   body: document.querySelector('[data-page]'),
@@ -8,10 +7,6 @@ const refs = {
 
 refs.openModalBtn.addEventListener('click', openModal);
 refs.closeModalBtn.addEventListener('click', closeModal);
-
-// function toggleModal() {
-//   reference.modal.classList.toggle('is-hidden');
-// }
 
 function openModal(e) {
   e.preventDefault();
