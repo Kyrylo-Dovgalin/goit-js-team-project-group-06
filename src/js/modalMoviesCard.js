@@ -17,15 +17,11 @@ const refs = {
   body: document.querySelector('[data-page]'),
 };
 
-console.log();
-
 const instance = basicLightbox.create(refs.backdrop, {
-  onOpen: instance => {
-    refs.body.style.overflowY = 'hidden';
-  },
+  onShow: instance => {},
   onClose: instance => {
+    document.querySelector('.backdrop-movie').style.overflowY = 'scroll';
     refs.body.classList.remove('no-scroll');
-    refs.body.style.overflowY = 'scroll';
   },
 });
 
