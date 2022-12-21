@@ -25,6 +25,7 @@ const instance = basicLightbox.create(refs.backdrop, {
   },
   onClose: instance => {
     refs.body.classList.remove('no-scroll');
+    refs.body.style.overflowY = 'scroll';
   },
 });
 
