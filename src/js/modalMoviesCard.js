@@ -16,9 +16,16 @@ const refs = {
   movieCard: document.querySelector('.movie-card'),
   body: document.querySelector('[data-page]'),
 };
+
+console.log();
+
 const instance = basicLightbox.create(refs.backdrop, {
+  onOpen: instance => {
+    refs.body.style.overflowY = 'hidden';
+  },
   onClose: instance => {
     refs.body.classList.remove('no-scroll');
+    refs.body.style.overflowY = 'scroll';
   },
 });
 
