@@ -243,11 +243,13 @@ function createMarkupMovieCardInModal({
     <p class="movie-about_text">${overview}</p>
   </div>
     <ul class="movie-list">
-      <li class="movie-item">
-        <button type="button" class="movie-item_button" data-id=${id} data-remove="wathced">Remove from watched</button>
+
+            <li class="movie-item">
+        <button type="button" class="movie-item_button hover" data-id=${id} data-remove="wathced">Remove from watched</button>
       </li>
       <li class="movie-item">
-        <button type="button" class="movie-item_button" data-id=${id} data-remove="queue">Remove from queue</button>
+        <button type="button" class="movie-item_button hover" data-id=${id} data-remove="queue">Remove from queue</button>
+
        </li>
     </ul>
   </div>
