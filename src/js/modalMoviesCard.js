@@ -55,6 +55,14 @@ async function searchIdforMovie(e) {
       .querySelector(`[data-add="queue"]`)
       .addEventListener('click', onAddToQueue);
 
+    document
+      .querySelector(`[data-remove="wathced"]`)
+      .addEventListener('click', onRemoveFromWatched);
+
+    document
+      .querySelector(`[data-remove="queue"]`)
+      .addEventListener('click', onRemoveFromQueue);
+
     const trailerButton = document.querySelector('.button-open-trailer');
 
     trailerButton.addEventListener(`click`, clickTrailer);
@@ -164,10 +172,18 @@ function createMarkupMovieCardInModal({
   </div>
     <ul class="movie-list">
       <li class="movie-item">
-        <button type="button" class="movie-item_button" data-id=${id} data-add="wathced">ADD TO WATHED</button>
+        <button type="button" class="movie-item_button" data-id=${id} data-add="wathced">Add to watched</button>
       </li>
       <li class="movie-item">
-        <button type="button" class="movie-item_button" data-id=${id} data-add="queue">ADD TO QUEUE</button>
+        <button type="button" class="movie-item_button" data-id=${id} data-add="queue">Add to queue</button>
+       </li>
+    </ul>
+    <ul class="movie-list">
+            <li class="movie-item">
+        <button type="button" class="movie-item_button" data-id=${id} data-remove="wathced">Remove from watched</button>
+      </li>
+      <li class="movie-item">
+        <button type="button" class="movie-item_button" data-id=${id} data-remove="queue">Remove from queue</button>
        </li>
     </ul>
   </div>
@@ -184,6 +200,7 @@ function onAddToWatched(e) {
     Notiflix.Report.success('', 'Film added to WATCHED');
     localStorage.setItem('WatchedFilms', JSON.stringify([filmIdToLS]));
   }
+
   if (parsedWathcedFilms.includes(filmIdToLS)) {
     Notiflix.Report.failure(
       '',
@@ -215,42 +232,47 @@ function onAddToQueue() {
   localStorage.setItem('QueueFilms', JSON.stringify(parsedQueueFilms));
 }
 
-// function onRemoveFromWatched(e) {
-//   const filmIdToLS = document.querySelector(`[data-add="wathced"]`).dataset.id;
+function onRemoveFromWatched(e) {
+  const filmIdToLS = document.querySelector(`[data-remove="wathced"]`).dataset
+    .id;
 
-//   const parsedWathcedFilms = JSON.parse(localStorage.getItem('WatchedFilms'));
-//   if (parsedWathcedFilms === null) {
-//     Notiflix.Report.success('', 'Film added to WATCHED');
-//     localStorage.setItem('WatchedFilms', JSON.stringify([filmIdToLS]));
-//   }
-//   if (parsedWathcedFilms.includes(filmIdToLS)) {
-//     Notiflix.Report.failure(
-//       '',
-//       'The movie has already been added to the list!'
-//     );
-//     return;
-//   }
+  const parsedWathcedFilms = JSON.parse(localStorage.getItem('WatchedFilms'));
+  if (parsedWathcedFilms === null) {
+    Notiflix.Report.failure('', 'The list of watched is empty');
+    return;
+  }
+  if (!parsedWathcedFilms.includes(filmIdToLS)) {
+    Notiflix.Report.failure('', 'There is no such movie in your watched list');
+    return;
+  }
+  if (parsedWathcedFilms.includes(filmIdToLS)) {
+    Notiflix.Report.success('', 'Movie is removed from watched');
+    localStorage.removeItem('WatchedFilms', JSON.stringify([filmIdToLS]));
+  }
 
-//   parsedWathcedFilms.push(filmIdToLS);
-//   Notiflix.Report.success('', 'Film added to WATCHED');
-//   localStor;
-//   age.setItem('WatchedFilms', JSON.stringify(parsedWathcedFilms));
-// }
-// function onRemoveFromQueue() {
-//   const filmIdToLS = document.querySelector(`[data-add="queue"]`).dataset.id;
+  parsedWathcedFilms.splice(parsedWathcedFilms.indexOf(filmIdToLS), 1);
+  Notiflix.Report.success('', 'Movie Del From WATCHED');
+  localStorage.setItem('WatchedFilms', JSON.stringify(parsedWathcedFilms));
+}
 
-//   const parsedQueueFilms = JSON.parse(localStorage.getItem('QueueFilms'));
-//   if (parsedQueueFilms === null) {
-//     localStorage.setItem('QueueFilms', JSON.stringify([filmIdToLS]));
-//   }
-//   if (parsedQueueFilms.includes(filmIdToLS)) {
-//     return Notiflix.Report.failure(
-//       '',
-//       'The movie has already been added to the queue!'
-//     );
-//   }
+function onRemoveFromQueue() {
+  const filmIdToLS = document.querySelector(`[data-remove="queue"]`).dataset.id;
+  const parsedQueueFilms = JSON.parse(localStorage.getItem('QueueFilms'));
 
-//   parsedQueueFilms.push(filmIdToLS);
-//   Notiflix.Report.success('', 'Film added to QUEUE');
-//   localStorage.setItem('QueueFilms', JSON.stringify(parsedQueueFilms));
-// }
+  if (parsedQueueFilms === null) {
+    Notiflix.Report.failure('', 'The list of watched is empty');
+    return;
+  }
+
+  if (!parsedQueueFilms.includes(filmIdToLS)) {
+    Notiflix.Report.failure('', 'There is no such movie in your queue list');
+    return;
+  }
+  if (parsedQueueFilms.includes(filmIdToLS)) {
+    Notiflix.Report.success('', 'Movie is removed from queue');
+    localStorage.removeItem('QueueFilms', JSON.stringify([filmIdToLS]));
+  }
+  parsedQueueFilms.splice(parsedQueueFilms.indexOf(filmIdToLS), 1);
+  Notiflix.Report.success('', 'Movie DEL QUEUE');
+  localStorage.setItem('QueueFilms', JSON.stringify(parsedQueueFilms));
+}
