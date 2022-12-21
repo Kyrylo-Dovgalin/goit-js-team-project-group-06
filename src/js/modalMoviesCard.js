@@ -237,7 +237,7 @@ function onRemoveFromWatched(e) {
     .id;
 
   const parsedWathcedFilms = JSON.parse(localStorage.getItem('WatchedFilms'));
-  if (parsedWathcedFilms === null) {
+  if (!parsedWathcedFilms) {
     Notiflix.Report.failure('', 'The list of watched is empty');
     return;
   }
@@ -259,7 +259,7 @@ function onRemoveFromQueue() {
   const filmIdToLS = document.querySelector(`[data-remove="queue"]`).dataset.id;
   const parsedQueueFilms = JSON.parse(localStorage.getItem('QueueFilms'));
 
-  if (parsedQueueFilms === null) {
+  if (!parsedQueueFilms) {
     Notiflix.Report.failure('', 'The list of watched is empty');
     return;
   }

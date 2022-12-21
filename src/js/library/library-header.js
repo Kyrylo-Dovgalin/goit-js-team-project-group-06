@@ -18,6 +18,7 @@ if (
   'My library'
 ) {
   onAddWatchedBtn();
+  return
 }
 
 function onAddWatchedBtn() {
