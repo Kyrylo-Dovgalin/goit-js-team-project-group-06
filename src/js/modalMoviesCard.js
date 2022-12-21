@@ -47,21 +47,25 @@ async function searchIdforMovie(e) {
     refs.closeModalBtn.addEventListener('click', closeModal);
     document.addEventListener('keydown', event => closeModalEscape(event));
 
-    document
-      .querySelector(`[data-add="wathced"]`)
-      .addEventListener('click', onAddToWatched);
+    if (
+      document.querySelector('.header__nav-link.active').textContent === 'Home'
+    ) {
+      document
+        .querySelector(`[data-add="wathced"]`)
+        .addEventListener('click', onAddToWatched);
 
-    document
-      .querySelector(`[data-add="queue"]`)
-      .addEventListener('click', onAddToQueue);
+      document
+        .querySelector(`[data-add="queue"]`)
+        .addEventListener('click', onAddToQueue);
+    } else {
+      document
+        .querySelector(`[data-remove="wathced"]`)
+        .addEventListener('click', onRemoveFromWatched);
 
-    document
-      .querySelector(`[data-remove="wathced"]`)
-      .addEventListener('click', onRemoveFromWatched);
-
-    document
-      .querySelector(`[data-remove="queue"]`)
-      .addEventListener('click', onRemoveFromQueue);
+      document
+        .querySelector(`[data-remove="queue"]`)
+        .addEventListener('click', onRemoveFromQueue);
+    }
 
     const trailerButton = document.querySelector('.button-open-trailer');
 
@@ -178,18 +182,84 @@ function createMarkupMovieCardInModal({
         <button type="button" class="movie-item_button" data-id=${id} data-add="queue">Add to queue</button>
        </li>
     </ul>
+  </div>
+</div>`;
+
+  const markupLibrary = `<div class="movie-card">
+  <div class="movie-card_request">
+    <div class="movie-card_img-cover">
+      <img
+      class="movie-card_photo"
+      src="${checkImg(poster_path)}"
+      alt="${title}"
+    />
+      <button type="button" class="button-open-trailer"></button>
+    </div>
+  </div>
+  <div class="movie-description">
+    <h2 class="movie-title">${title}</h2>
+    <table class="movie-table">
+      <tbody>
+        <tr class="movie-table_row">
+          <td>
+            <p class="movie-table_title">Vote/Votes</p>
+          </td>
+          <td>
+            <p>
+              <span class= "movie-table_vote"> <span class= "movie-table_vote_aver"> ${vote_average.toFixed(
+                1
+              )} </span> / ${vote_count}</span>
+            </p>
+          </td>
+        </tr>
+        <tr class="movie-table_row">
+          <td>
+            <p class="movie-table_title">Popularity</p>
+          </td>
+          <td>
+            <p>${popularity}</p>
+          </td>
+        </tr>
+        <tr class="movie-table_row">
+          <td>
+            <p class="movie-table_title">Original Title</p>
+          </td>
+          <td>
+             <p class="movie-table_title_ori">${original_title}</p>
+          </td>
+        </tr>
+        <tr class="movie-table_row">
+          <td>
+            <p class="movie-table_title">Genre</p>
+          </td>
+          <td>
+            <p>${movieGenres}</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="movie-about_container">
+    <h3 class="movie-about">About</h3>
+    <p class="movie-about_text">${overview}</p>
+  </div>
     <ul class="movie-list">
-            <li class="movie-item">
-        <button type="button" class="movie-item_button" data-id=${id} data-remove="wathced">Remove from watched</button>
+      <li class="movie-item">
+        <button type="button" class="movie-item_button" data-id=${id} data-remove="wathced">Remove to watched</button>
       </li>
       <li class="movie-item">
-        <button type="button" class="movie-item_button" data-id=${id} data-remove="queue">Remove from queue</button>
+        <button type="button" class="movie-item_button" data-id=${id} data-remove="queue">Remove to queue</button>
        </li>
     </ul>
   </div>
 </div>`;
 
-  refs.movieCard.innerHTML = markup;
+  if (
+    document.querySelector('.header__nav-link.active').textContent === 'Home'
+  ) {
+    refs.movieCard.innerHTML = markup;
+  } else {
+    refs.movieCard.innerHTML = markupLibrary;
+  }
 }
 
 function onAddToWatched(e) {
