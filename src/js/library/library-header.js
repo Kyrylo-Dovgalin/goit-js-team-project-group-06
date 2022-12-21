@@ -2,10 +2,10 @@ import { fetchById } from '../../api-services/movies-api-service';
 import { dotaReleaseCheck } from '../home/home-movies';
 import { refs } from '../modalMoviesCard';
 const addWatchedBtn = document.querySelector(
-  '.library__btns-btn[data-add="watched"]'
+  '.library__btns-btn[data-add="watchedMB"]'
 );
 const addQueueBtn = document.querySelector(
-  '.library__btns-btn[data-add="queue"]'
+  '.library__btns-btn[data-add="queueMB"]'
 );
 
 import Notiflix from 'notiflix';
@@ -18,6 +18,7 @@ if (
   'My library'
 ) {
   onAddWatchedBtn();
+  
 }
 
 function onAddWatchedBtn() {
