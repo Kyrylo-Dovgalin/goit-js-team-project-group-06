@@ -197,7 +197,7 @@ function sendPasswordReset() {
 function initApp() {
   // Listening for auth state changes.
   onAuthStateChanged(auth, function (user) {
-    console.dir(user);
+    // console.dir(user);
 
     const iconSignIn = document.querySelector('#icon-signin');
     const iconLogOut = document.querySelector('#icon-logout');
