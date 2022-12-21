@@ -59,7 +59,7 @@ function onAddQueueBtn() {
 
 function markup(r) {
   const { poster_path, title, id, release_date, genres } = r;
-
+ const movieGenres = genres.map(({ name }) => name).join(', ');
   const markup = `<li class="movies__card" id="${id}">
       <img
         class="movies__card-photo"
@@ -70,10 +70,7 @@ function markup(r) {
         height="354px"
       />
       <h2 class="movies__card-title">${title}</h2>
-      <p class="movies__card-genres">${genres.reduce((acc, el) => {
-        acc += `${el.name}, `;
-        return acc;
-      }, '')} | ${dotaReleaseCheck(release_date)}</p>
+      <p class="movies__card-genres">${movieGenres} | ${dotaReleaseCheck(release_date)}</p>
     </li>`;
 
   return document
