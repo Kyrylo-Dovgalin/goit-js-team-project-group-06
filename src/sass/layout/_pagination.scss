@@ -5,20 +5,20 @@
   -ms-user-select: none;
   user-select: none;
 }
-//----------------------------------------------
-/*created by Kyrylo need to be fixed*/
+
+
 .tui-pagination {
-  padding-bottom: 200px; // to fix
+  padding-bottom: 200px; 
 
   @media screen and (min-width: $tablet) {
-    padding-bottom: 150px; // to fix
+    padding-bottom: 150px; 
   }
 
   @media screen and (min-width: $desktop) {
-    padding-bottom: 135px; // to fix
+    padding-bottom: 135px; 
   }
 }
-//----------------------------------------------
+
 
 .tui-pagination {
   height: 28px;

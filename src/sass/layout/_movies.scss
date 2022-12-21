@@ -1,16 +1,10 @@
 .movies {
   padding-top: 20px;
   padding-bottom: 40px;
-  // padding-bottom: 145px; // to fix
 
   @media screen and (min-width: $tablet) {
     padding-top: 59px;
     padding-bottom: 60px;
-    // padding-bottom: 105px; // to fix
-  }
-
-  @media screen and (min-width: $desktop) {
-    // padding-bottom: 85px; // to fix
   }
 
   &__list {
@@ -114,13 +108,13 @@
 }
 
 .movies--padding {
-  padding-bottom: 200px; // to fix
+  padding-bottom: 200px;
 
   @media screen and (min-width: $tablet) {
-    padding-bottom: 150px; // to fix
+    padding-bottom: 150px;
   }
 
   @media screen and (min-width: $desktop) {
-    padding-bottom: 135px; // to fix
+    padding-bottom: 135px;
   }
 }
