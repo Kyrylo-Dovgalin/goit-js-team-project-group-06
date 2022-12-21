@@ -81,6 +81,13 @@ function markup(r) {
 }
 
 refs.closeModalBtn.addEventListener('click', updateMarkup);
+document.addEventListener('keydown', event => closeModalEscape(event))
+function closeModalEscape(event) {
+  if (event.key !== 'Escape') {
+    return;
+  }
+  updateMarkup();
+}
 
 function updateMarkup() {
   console.log("im here")
