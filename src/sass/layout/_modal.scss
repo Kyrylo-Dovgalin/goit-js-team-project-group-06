@@ -73,7 +73,7 @@ body.no-scroll {
 
 .movie-card_photo {
   display: flex;
-border-radius: 4px;
+  border-radius: 4px;
   @media screen and (min-width: $mobile) and (max-width: 767px) {
     width: 240px;
     height: 357px;
@@ -100,27 +100,27 @@ border-radius: 4px;
   border-style: solid;
   /* background: $background-accent-cl;*/
   box-sizing: border-box;
-  width: calc(55px*2);
-  border-width:5px; 
-  height: calc(55px*2); 
+  width: calc(55px * 2);
+  border-width: 5px;
+  height: calc(55px * 2);
   border-radius: 50%;
   border-color: white;
   background-color: transparent;
   @media screen and (min-width: $mobile) and (max-width: 767px) {
     width: 55px;
-    height: 55px; 
-    border-width:2px; 
+    height: 55px;
+    border-width: 2px;
   }
   &:hover,
   &:focus {
     background-color: $background-accent-cl;
-    border-color: transparent,transparent,transparent,orange;
-    border-style:solid
-
+    border-color: transparent, transparent, transparent, orange;
+    border-style: solid;
   }
 }
 
-.button-open-trailer::after{ content: '';
+.button-open-trailer::after {
+  content: '';
   display: inline-block;
   position: relative;
   top: 1px;
@@ -136,13 +136,12 @@ border-radius: 4px;
     background-color: $background-accent-cl;
     border-style: solid;
   }
-
 }
 
 .movie-description {
   display: block;
-    font-family: $main-font;
-      font-size: 12px;
+  font-family: $main-font;
+  font-size: 12px;
 
   @media screen and (min-width: $tablet) {
     display: flex;
@@ -155,10 +154,9 @@ border-radius: 4px;
   font-size: 30px;
   line-height: 1.17;
   margin-bottom: 20px;
-text-transform: uppercase;
+  text-transform: uppercase;
   @media screen and (min-width: $tablet) and (max-width: 1279px) {
     margin-left: 68px;
-    
   }
 
   @media screen and (min-width: $desktop) {
@@ -191,6 +189,7 @@ text-transform: uppercase;
   color: $modal-text-cl;
 }
 .movie-table_vote_aver {
+  padding-left: 4px;
   background-color: $accent-text-cl;
   color: #fff;
 
@@ -235,17 +234,15 @@ text-transform: uppercase;
   font-weight: 500;
   line-height: 1.67;
   margin-bottom: 20px;
-    @media screen and (max-width: 767px) {
-        max-height: 100px;
-        overflow: auto;
-      }
-    
-      ;
-    
-      @media screen and (min-width: 767px) and (max-width: $desktop) {
-        max-height: 236px;
-        overflow: auto;
-      }
+  @media screen and (max-width: 767px) {
+    max-height: 100px;
+    overflow: auto;
+  }
+
+  @media screen and (min-width: 767px) and (max-width: $desktop) {
+    max-height: 236px;
+    overflow: auto;
+  }
 }
 
 .movie-list {
