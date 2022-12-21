@@ -7,11 +7,11 @@ body.no-scroll {
   
   border-radius: 20px;
   padding: 48px 20px 40px;
-scroll-behavior: smooth;
-  overflow-y: scroll;
+
   @media screen and (max-width: 767px){width: 85dvw;
     height: 95dvh;}
- 
+ scroll-behavior: smooth;
+ overflow-y: scroll;
   @media screen and (min-width: $tablet) {
     width: 704px;
     padding: 40px 72px 40px 36px;
