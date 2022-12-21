@@ -7,13 +7,14 @@ body.no-scroll {
 
   border-radius: 20px;
   padding: 48px 20px 40px;
+
   scroll-behavior: smooth;
   overflow-y: hidden;
+
   @media screen and (max-width: 767px) {
     width: 85dvw;
     height: 95dvh;
   }
-
   @media screen and (min-width: $tablet) {
     width: 704px;
     padding: 40px 72px 40px 36px;
@@ -313,5 +314,13 @@ body.no-scroll {
   @media screen and (min-width: $desktop) {
     width: 136px;
     height: 44px;
+  }
+}
+.hover {
+  margin-top: 15px;
+  &:hover,
+  &:focus {
+    background-color: $warning-text-cl;
+    color: $white-text-cl;
   }
 }
