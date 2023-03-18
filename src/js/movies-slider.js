@@ -1,84 +1,63 @@
-// export { refs };
-import { getPopularMovies } from '..//api-services/movies-api-service';
-import Notiflix, { Notify } from 'notiflix';
-import axios from 'axios';
+import * as basicLightbox from 'basiclightbox';
+import { glide } from './glide-slider';
+import { fetchTrailerSlider } from './trailer';
+import {KEY} from './localStorageKey';
+import { getTrendMovies } from '../api-services/movies-api-service';
 
 const refs = {
-  moviesContainer: document.querySelector('.movies-container'),
-  sliderList: document.querySelector('.movies-slider__list'),
+  slidesList: document.querySelector('.glide__slides'),
 }
 
-
-
-const BASE_URL = 'https://api.themoviedb.org/3/';
-const API_KEY = 'f983fc840eb543faba07dcbe6db19b0b';
-
-
-  function popularMovies() {
-      const response = axios.get(`${BASE_URL}?key=${API_KEY}`)
-      const data = response.json();
-      console.log(data);
-        return data;
-    }
-
-
-renderSlideFilms()
-
-// const moviesApiService = page;
-
-// console.dir(refs.moviesContainer);
-// console.dir(refs.sliderList);
-// moviesSlider(page)
-
-// async function moviesSlider(page) {
-//   if (page) {
-//     moviesApiService.page = page;
-//   }}
-  function renderSlideFilms() {
-    popularMovies().then((data ) => {
-      console.log(data);
-      markupMoviesSliderCard(data);
-      onClickMoviesSliderCard();
-        })
-
+  export async function renderSliderMovies() {
+    const {results} = await getTrendMovies()
+      markupMoviesSliderCard(results);
   }
 
+  renderSliderMovies();
 
+function markupMoviesSliderCard(results) {
+  const markup = results.map(({ title, poster_path, id }) => {
+  return `
+    <li class="movies-slides__item">
+    <img class="movies-slides__img"
+    src="https://image.tmdb.org/t/p/w500${poster_path}"
+    alt="${title}"
+    data-id="${id}"
+    width="143.25"
+    height ="214.8"
+    />
 
+    <button data-id="${id}" class="button-open-trailer-slider" type="button"></button>
+    </li>`
+  }).join('');
 
-
-    // const movingMoviesCard = page;
-    // const demoMoviesCards = page.target.id;
-    // const response = await fetchById(demoMoviesCards);
-
-
-function markupMoviesSliderCard(data) {
-  refs.moviesContainer.innerHTML = '';
-
-  const markup = `<div class="movies-container">
-  <div class="movies-slider">
-      <ul class="movies-slider__list">
-      <li class="movies-slider__item">
-      <img
-            class="movies-slider__img"
-            src="./images/modal/todelete.jpg"
-            alt="Название фильма"
-          />
-      </li>
-      </ul>
-  </div>
-  <div class="movies-slider__arrows">
-      <button class="movies-slider__arrows--left" </button>
-      <button class="movies-slider__arrows--right" </button>
-  </div>
-</div>`
-
-refs.moviesContainer.insertAdjacentHTML('beforeend', markup);
+   refs.slidesList.innerHTML = markup;
+   glide.mount();
+   showSliderTrailer(document.querySelectorAll('.button-open-trailer-slider'))
 }
 
-function onClickMoviesSliderCard() {
 
-  refs.sliderList.addEventListener('click', event => {
-    searchIdforMovie(event);
+function showSliderTrailer(trailer) {
+  trailer.forEach(item => {
+    item.addEventListener('click', event => {
+      fetchTrailerSlider(event.target.dataset.id);
+
+  const getTrailerKey = localStorage.getItem(KEY);
+
+  const { key } = JSON.parse(getTrailerKey);
+
+  const instance = basicLightbox.create(`
+  <div class="close-btn-trailer"></div>
+  <iframe  width="660" height="415" src='https://www.youtube.com/embed/${key}' frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+`);
+  instance.show();
+
+  const closeBtnTrailer = document.querySelector('.close-btn-trailer');
+  closeBtnTrailer.addEventListener('click', () => {
+    instance.close();
+  });
+    });
   });
 }
+
+

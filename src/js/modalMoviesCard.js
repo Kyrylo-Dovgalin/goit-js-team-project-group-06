@@ -29,7 +29,7 @@ refs.openModal.addEventListener('click', searchIdforMovie);
 
 //Получаем данные по ID фильма и после того как приходят данные по запросу рендерим данные в модалку
 
-async function searchIdforMovie(e) {
+export async function searchIdforMovie(e) {
   if (e.target.nodeName === 'LI') {
     const idMovie = e.target.id;
     const response = await fetchById(idMovie);
@@ -90,7 +90,7 @@ function closeModalEscape(event) {
   closeModal();
 }
 
-function clickTrailer(event) {
+export function clickTrailer(event) {
   event.preventDefault();
 
   const filmIdToLS = document.querySelector(`[data-add="wathced"]`).dataset.id;
