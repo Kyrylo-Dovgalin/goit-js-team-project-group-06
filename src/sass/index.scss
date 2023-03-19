@@ -10,6 +10,7 @@
 @import './base/container';
 
 @import './layout/header';
+@import './layout/movies-slider';
 @import './layout/movies';
 @import './layout/library-movies';
 @import './layout/pagination';
@@ -20,3 +21,5 @@
 
 @import './layout/sign-in';
 
+//Slider
+@import '..//..//node_modules/@glidejs/glide/src/assets/sass/glide.core.scss';

@@ -1,0 +1,249 @@
+.slides {
+  padding-top: 20px;
+}
+
+.title-trailer {
+  text-align: center;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.17;
+  text-transform: uppercase;
+  text-shadow: 4px 4px 2px #969696;
+}
+
+.movies-container {
+  position: relative;
+  display: flex;
+}
+
+.glide {
+  display: none;
+
+  @media screen and (min-width: $tablet) {
+    display: inline-block;
+    position: relative;
+  }
+}
+
+.glide__track {
+  overflow: hidden;
+}
+
+.glide__slides {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+}
+
+.movies-slides__item {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.movies-slides__img {
+  display: flex;
+  margin-bottom: 10px;
+  padding-top: 20px;
+  transition: transform $cubic;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+  transition: box-shadow $cubic;
+  &:hover,
+  &:focus {
+    box-shadow: 0px 0px 5px 0px #ffffff;
+    transform: scale(1.2);
+    border-radius: 5px;
+  }
+}
+
+.glide__arrow {
+  position: absolute;
+  display: flex;
+  top: 50%;
+  text-transform: uppercase;
+  border: 2px solid hsla(0,0%,100%,.5);
+  text-shadow: 0 0.25em 0.5em rgb(0 0 0 / 10%);
+  opacity: 1;
+  cursor: pointer;
+  transition: opacity $cubic;
+  transform: translateY(-50%);
+  line-height: 1;
+
+}
+
+.glider-next,
+.glider-prev {
+  width: 30px;
+  height: 30px;
+  text-transform: uppercase;
+  border: 2px solid hsla(0,0%,100%,.5);
+  text-shadow: 0 0.25em 0.5em rgb(0 0 0 / 10%);
+  opacity: 0.4;
+  transition: 0.3s linear;
+
+  @media screen and (min-width: $desktop) {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.glider-next:hover,
+.glider-next:focus,
+.glider-prev:hover,
+.glider-prev:focus {
+  opacity: 0.8;
+  fill: $accent-text-cl;
+}
+
+.glide__arrows {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+}
+
+.glide__arrow {
+  border: none;
+  background-color: transparent;
+}
+
+.glide__arrow--left {
+  left: 25px;
+
+  @media screen and (min-width: $tablet) {
+    left: 35px;
+  }
+  @media screen and (min-width: $desktop) {
+    left: 35px;
+  }
+}
+
+.glide__arrow--right {
+  right: 25px;
+
+  @media screen and (min-width: $tablet) {
+    right: 35px;
+  }
+  @media screen and (min-width: $desktop) {
+    right: 35px;
+  }
+}
+
+
+  .button-open-trailer-slider {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-style: solid;
+    box-sizing: border-box;
+    width: calc(45px * 2);
+    border-width: 5px;
+    height: calc(45px * 2);
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    border-color: white;
+    opacity: 0;
+    background-color: transparent;
+    cursor: pointer;
+    @media screen and (min-width: $mobile) and (max-width: 767px) {
+      width: 45px;
+      height: 45px;
+      border-width: 2px;
+    }
+    &:hover,
+    &:focus {
+      background-color: $background-accent-cl;
+      border-color: transparent, orange;
+      border-style: solid;
+      opacity: 1;
+    }
+  }
+
+  .button-open-trailer-slider::after {
+    content: '';
+    display: inline-block;
+    position: relative;
+    top: 2px;
+    left: 4px;
+    border-style: solid;
+    border-width: 10px 0 10px 20px;
+    @media screen and (min-width: $mobile) and (max-width: 767px) {
+      border-width: 10px 0 10px 20px;
+    }
+    border-color: transparent white;
+    &:hover,
+    &:focus {
+      background-color: $background-accent-cl;
+      border-style: solid;
+    }
+  }
+
+  .basicLightbox__placeholder {
+    display: grid;
+    place-items: center;
+  }
+
+  .basicLightbox__placeholder > iframe {
+    width: 300px;
+    height: 270px;
+
+    @media screen and (min-width: $tablet) {
+      width: 660px;
+      height: 370px;
+    }
+
+    @media screen and (min-width: $desktop) {
+      width: 850px;
+      height: 470px;
+    }
+  }
+
+
+  .close-btn-trailer {
+    cursor: pointer;
+    position: absolute;
+    top: -39px;
+    left: 150px;
+    padding: 10px;
+
+    @media screen and (min-width: $tablet) {
+      top: 0px;
+      right: 0px;
+    }
+  }
+  .close-btn-trailer:before,
+  .close-btn-trailer:after {
+    content: '';
+    position: absolute;
+    top: 12px;
+    right: 2px;
+    width: 24px;
+    height: 4px;
+    background: red;
+    transition-property: all;
+    transition-duration: 250ms;
+    transition-timing-function: linear;
+    transition-delay: 0;
+  }
+  .close-btn-trailer:before {
+    transform: rotate(45deg);
+  }
+  .close-btn-trailer:after {
+    transform: rotate(-45deg);
+  }
+
+  .close-btn-trailer:hover::after {
+    transform: rotate(130deg);
+  }
+  .close-btn-trailer:hover::before {
+    transform: rotate(220deg);
+  }
+
+
